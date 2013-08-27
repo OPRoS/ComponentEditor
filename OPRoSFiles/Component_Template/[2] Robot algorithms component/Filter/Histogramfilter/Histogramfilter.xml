@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<component_profile>
+	<id>65bd2d3a-e58f-4cdd-a13b-e5ffbe1f8c82</id>
+	<name>Histogramfilter</name>
+	<version>1.0</version>
+	<layout>100,150,250,200</layout>
+	<copyright>
+		<company>
+			<name />
+			<phone />
+			<address />
+			<homepage />
+		</company>
+		<license_policy />
+	</copyright>
+	<execution_environment>
+		<library_type>dll</library_type>
+		<library_name>Histogramfilter.dll</library_name>
+		<impl_language>MinGW C++</impl_language>
+		<compiler>g++</compiler>
+		<app_domain />
+		<app_robot />
+	</execution_environment>
+	<execution_semantics>
+		<type>periodic</type>
+		<period>100</period>
+		<priority>5</priority>
+		<instance_creation>singleton</instance_creation>
+		<lifecycle_type>start</lifecycle_type>
+	</execution_semantics>
+	<properties />
+	<data_type_list />
+	<defined_data_types />
+	<defined_service_types />
+</component_profile>
+

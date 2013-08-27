@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<service_port_type_profile>
+	<service_port_type>
+		<type_name>BayesianFiltering</type_name>
+		<method name="ProbabilityGet" return_type="Probability" call_type="blocking">
+			<param index="1">
+				<name>input</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+		</method>
+		<method name="ExpectedValueGet" return_type="MatrixWrapper::ColumnVector" call_type="blocking" />
+		<method name="CovarianceGet" return_type="MatrixWrapper::SymmetricMatrix" call_type="blocking" />
+		<method name="ExpectedValueSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>mu</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+		</method>
+		<method name="CovarianceSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>cov</name>
+				<type>const MatrixWrapper::SymmetricMatrix&amp;</type>
+			</param>
+		</method>
+		<method name="NormalizeProbs" return_type="bool" call_type="blocking" />
+		<method name="CumPDFUpdate" return_type="bool" call_type="blocking" />
+		<method name="NumStatesGet" return_type="unsinged int" call_type="blocking" />
+		<method name="ProbabilitySet" return_type="bool" call_type="blocking">
+			<param index="1">
+				<name>state</name>
+				<type>int</type>
+			</param>
+			<param index="2">
+				<name>a</name>
+				<type>Probability</type>
+			</param>
+		</method>
+		<method name="MostProbableStateGet" return_type="int" call_type="blocking" />
+		<method name="PostSigmaSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>s</name>
+				<type>const MatrixWrapper::SymmetricMatrix&amp;</type>
+			</param>
+		</method>
+		<method name="PostMuSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>c</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+		</method>
+		<method name="CalculateSysUpdate" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>j</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="2">
+				<name>F</name>
+				<type>const MatrixWrapper::Matrix&amp;</type>
+			</param>
+			<param index="3">
+				<name>q</name>
+				<type>const MatrixWrapper::SymmetricMatrix&amp;</type>
+			</param>
+		</method>
+		<method name="SysUpdate" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>sysmodel</name>
+				<type>SystemModel&lt;MatrixWrapper::ColumnVector&gt;* const</type>
+			</param>
+			<param index="2">
+				<name>u</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+		</method>
+		<method name="MeasUpdate" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>measmodel</name>
+				<type>MeasurementModel&lt;MatrixWrapper::ColumnVector,MatrixWrapper::ColumnVector&gt;* const</type>
+			</param>
+			<param index="2">
+				<name>z</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="3">
+				<name>s</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+		</method>
+		<method name="UpdateInternal" return_type="bool" call_type="blocking">
+			<param index="1">
+				<name>sysmodel</name>
+				<type>SystemModel&lt;MatrixWrapper::ColumnVector&gt;* const</type>
+			</param>
+			<param index="2">
+				<name>u</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="3">
+				<name>measmodel</name>
+				<type>MeasurementModel&lt;MatrixWrapper::ColumnVector,MatrixWrapper::ColumnVector&gt;* const</type>
+			</param>
+			<param index="4">
+				<name>z</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="5">
+				<name>s</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+		</method>
+		<method name="ProposalStepInternal" return_type="bool" call_type="blocking">
+			<param index="1">
+				<name>sysmodel</name>
+				<type>SystemModel&lt;ColumnVector&gt; * const</type>
+			</param>
+			<param index="2">
+				<name>u</name>
+				<type>const ColumnVector &amp;</type>
+			</param>
+			<param index="3">
+				<name>measmodel</name>
+				<type>MeasurementModel&lt;ColumnVector,ColumnVector&gt; * const</type>
+			</param>
+			<param index="4">
+				<name>z</name>
+				<type>const ColumnVector &amp;</type>
+			</param>
+			<param index="5">
+				<name>s</name>
+				<type>const ColumnVector &amp;</type>
+			</param>
+		</method>
+		<method name="Resample" return_type="bool" call_type="blocking" />
+		<method name="IndexGet" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>input</name>
+				<type>const int&amp;</type>
+			</param>
+			<param index="2">
+				<name>condargs</name>
+				<type>const std::vector&lt;int&gt;&amp;</type>
+			</param>
+		</method>
+		<method name="AllocateMeasModelIExt" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>meas_dimensions</name>
+				<type>const vector&lt;unsigned int&gt;&amp;</type>
+			</param>
+		</method>
+		<method name="AGet" return_type="const MatrixWrapper::Matrix&amp;" call_type="blocking" />
+		<method name="BGet" return_type="const MatrixWrapper::Matrix&amp;" call_type="blocking" />
+		<method name="ASet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>a</name>
+				<type>const MatrixWrapper::Matrix &amp;</type>
+			</param>
+		</method>
+		<method name="SetASIRFilter" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>prior</name>
+				<type>MCPdf&lt;StateVar&gt; *</type>
+			</param>
+			<param index="2">
+				<name>resampleperiod</name>
+				<type>int</type>
+			</param>
+			<param index="3">
+				<name>resamplethreshold</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>resamplescheme</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="SetBootstrapFilter" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>prior</name>
+				<type>MCPdf&lt;StateVar&gt; *</type>
+			</param>
+			<param index="2">
+				<name>resampleperiod</name>
+				<type>int</type>
+			</param>
+			<param index="3">
+				<name>resamplethreshold</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>resamplescheme</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="SetFilter" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>prior</name>
+				<type>MCPdf&lt;ColumnVector&gt; *</type>
+			</param>
+			<param index="2">
+				<name>resampleperiod</name>
+				<type>int</type>
+			</param>
+			<param index="3">
+				<name>resamplethreshold</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>resamplescheme</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="UpdateWeightsInternal" return_type="bool" call_type="blocking">
+			<param index="1">
+				<name>sysmodel</name>
+				<type>SystemModel&lt;StateVar&gt; * const</type>
+			</param>
+			<param index="2">
+				<name>u</name>
+				<type>const StateVar &amp;</type>
+			</param>
+			<param index="3">
+				<name>measmodel</name>
+				<type>MeasurementModel&lt;MeasVar,StateVar&gt; *</type>
+			</param>
+			<param index="4">
+				<name>z</name>
+				<type>const MeasVar &amp;</type>
+			</param>
+			<param index="5">
+				<name>s</name>
+				<type>const StateVar &amp;</type>
+			</param>
+		</method>
+		<method name="DynamicResampleStep" return_type="bool" call_type="blocking" />
+		<method name="StaticResampleStep" return_type="bool" call_type="blocking" />
+		<method name="PostGet" return_type="MCPdf&lt;StateVar&gt; *" call_type="blocking" />
+		<method name="ProposalGet" return_type="ConditionalPdf&lt;StateVar,StateVar&gt; *" call_type="blocking" />
+		<method name="ProposalSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>cpdf</name>
+				<type>ConditionalPdf&lt;StateVar,StateVar&gt;* const</type>
+			</param>
+		</method>
+		<method name="ParticleFilter" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>filt</name>
+				<type>const ParticleFilter&lt;StateVar,MeasVar&gt; &amp;</type>
+			</param>
+		</method>
+		<method name="SRCovarianceSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>JP_new</name>
+				<type>MatrixWrapper::Matrix</type>
+			</param>
+		</method>
+		<method name="PriorSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>X</name>
+				<type>MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="2">
+				<name>P</name>
+				<type>MatrixWrapper::SymmetricMatrix&amp;</type>
+			</param>
+		</method>
+		<method name="CalculateMeasUpdate" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>z</name>
+				<type>MatrixWrapper::ColumnVector</type>
+			</param>
+			<param index="2">
+				<name>Z</name>
+				<type>MatrixWrapper::ColumnVector</type>
+			</param>
+			<param index="3">
+				<name>H</name>
+				<type>MatrixWrapper::Matrix</type>
+			</param>
+			<param index="4">
+				<name>R</name>
+				<type>MatrixWrapper::SymmetricMatrix</type>
+			</param>
+		</method>
+		<method name="CalculateMatrix" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>H_i</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+			<param index="2">
+				<name>R_i</name>
+				<type>MatrixWrapper::SymmetricMatrix&amp;</type>
+			</param>
+			<param index="3">
+				<name>invS</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+			<param index="4">
+				<name>Sr</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+			<param index="5">
+				<name>K_i</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+		</method>
+		<method name="CalculateMean" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>x_k</name>
+				<type>MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="2">
+				<name>z</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="3">
+				<name>Z_i</name>
+				<type>MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="4">
+				<name>K_i</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+		</method>
+		<method name="CalculateCovariance" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>R_vf</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+			<param index="2">
+				<name>H_i</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+			<param index="3">
+				<name>invS</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+			<param index="4">
+				<name>SR</name>
+				<type>MatrixWrapper::Matrix&amp;</type>
+			</param>
+		</method>
+	</service_port_type>
+</service_port_type_profile>
+

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<service_port_type_profile>
+	<service_port_type>
+		<type_name>ProbabilityDensity</type_name>
+		<method name="SampleFrom" return_type="bool" call_type="blocking">
+			<param index="1">
+				<name>list_samples</name>
+				<type>vector&lt;Sample&lt;T&gt; &gt;&amp;</type>
+			</param>
+			<param index="2">
+				<name>num_samples</name>
+				<type>const unsigned int</type>
+			</param>
+		</method>
+		<method name="ProbabilityGet" return_type="Probability" call_type="blocking" />
+		<method name="DimensionGet" return_type="int" call_type="blocking" />
+		<method name="DimensionSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>dim</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="CovarianceGet" return_type="MatrixWrapper::SymmetricMatrix" call_type="blocking" />
+		<method name="dfGet" return_type="MatrixWrapper::Matrix" call_type="blocking">
+			<param index="1">
+				<name>i</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="SetAnalyticConditionalGaussian" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>dim</name>
+				<type>int</type>
+			</param>
+			<param index="2">
+				<name>num_conditional_arguments</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="SetAnalyticConditionalGaussianAdditiveNoise" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>gaus</name>
+				<type>const Gaussian&amp;</type>
+			</param>
+			<param index="2">
+				<name>num_conditional_arguments</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="AdditiveNoiseMuGet" return_type="MatrixWrapper::ColumnVector&amp;" call_type="blocking" />
+		<method name="AdditiveNoiseSigmaGet" return_type="MatrixWrapper::SymmetricMatrix&amp;" call_type="blocking" />
+		<method name="AdditiveNoiseMuSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>mu</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+		</method>
+		<method name="AdditiveNoiseSigmaSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>sigma</name>
+				<type>const MatrixWrapper::SymmetricMatrix&amp;</type>
+			</param>
+		</method>
+		<method name="SetConditionalPdf" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>dim</name>
+				<type>int</type>
+			</param>
+			<param index="2">
+				<name>num_conditional_arguments</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="SetConditionalGaussian" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>gaus</name>
+				<type>const Gaussian&amp;</type>
+			</param>
+			<param index="2">
+				<name>num_conditional_arguments</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="NumConditionalArgumentsGet" return_type="unsigned int" call_type="blocking" />
+		<method name="NumConditionalArgumentsSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>numconditionalarguments</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="ConditionalArgumentsGet" return_type="std::vector&lt;CondArg&gt;&amp;" call_type="blocking" />
+		<method name="ConditionalArgumentsSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>ConditionalArguments</name>
+				<type>std::vector&lt;CondArg&gt;</type>
+			</param>
+		</method>
+		<method name="ConditionalArgumentGet" return_type="CondArg&amp;" call_type="blocking">
+			<param index="1">
+				<name>n_argument</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="ConditionalArgumentSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>n_argument</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="2">
+				<name>argument</name>
+				<type>const CondArg&amp;</type>
+			</param>
+		</method>
+		<method name="IndexGet" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>input</name>
+				<type>const int&amp;</type>
+			</param>
+			<param index="2">
+				<name>condargs</name>
+				<type>const std::vector&lt;int&gt;&amp;</type>
+			</param>
+		</method>
+		<method name="NumStatesGet" return_type="int" call_type="blocking" />
+		<method name="MostProbableStateGet" return_type="int" call_type="blocking" />
+		<method name="SetDiscretePdf" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>num_states</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="SetEKFProposalDensity" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>SysModel</name>
+				<type>AnalyticSystemModelGaussianUncertainty *</type>
+			</param>
+			<param index="2">
+				<name>MeasModel</name>
+				<type>AnalyticMeasurementModelGaussianUncertainty *</type>
+			</param>
+		</method>
+		<method name="SystemModelSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>SysModel</name>
+				<type>AnalyticSystemModelGaussianUncertainty *</type>
+			</param>
+		</method>
+		<method name="MeasurementModelSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>MeasModel</name>
+				<type>AnalyticMeasurementModelGaussianUncertainty *</type>
+			</param>
+		</method>
+		<method name="SampleCovSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>cov</name>
+				<type>MatrixWrapper::SymmetricMatrix &amp;</type>
+			</param>
+		</method>
+		<method name="SetGaussian" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>Mu</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+			<param index="2">
+				<name>Sigma</name>
+				<type>const MatrixWrapper::SymmetricMatrix&amp;</type>
+			</param>
+		</method>
+		<method name="ExpectedValueGet" return_type="MatrixWrapper::ColumnVector" call_type="blocking" />
+		<method name="ExpectedValueSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>mu</name>
+				<type>const MatrixWrapper::ColumnVector&amp;</type>
+			</param>
+		</method>
+		<method name="CovarianceSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>cov</name>
+				<type>const MatrixWrapper::SymmetricMatrix&amp;</type>
+			</param>
+		</method>
+		<method name="MatrixSet" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>i</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="2">
+				<name>m</name>
+				<type>const MatrixWrapper::Matrix&amp;</type>
+			</param>
+		</method>
+		<method name="MatrixGet" return_type="MatrixWrapper::Matrix&amp;" call_type="blocking">
+			<param index="1">
+				<name>i</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+	</service_port_type>
+</service_port_type_profile>
+

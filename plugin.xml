@@ -1,0 +1,2135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+        point="org.eclipse.ui.perspectives">
+        <perspective 
+         	class="kr.co.ed.opros.ce.ui.perspectives.OPRoSPerspectiveFactory" 
+         	icon="/icons/newIcon/opros.png" 
+         	id="kr.co.ed.opros.ce.ui.OPRoSPerspective" 
+         	name="OPRoS Component Editor" /> 
+   </extension>
+   <extension
+        point="org.eclipse.ui.newWizards">
+        <category 
+         	id="kr.co.ed.opros.ce" 
+         	name="OPRoS" /> 
+   		<wizard 
+   			category="kr.co.ed.opros.ce" 
+   			class="kr.co.ed.opros.ce.wizards.OPRoSNewPrjWizard" 
+   			icon="/icons/newIcon/opros.png" 
+   			id="kr.co.ed.opros.ce.wizards.OPRoSNewPrjWizard" 
+   			name="Create New OPRoS Project" 
+   			project="true" 
+   			finalPerspective="" /> 
+   		<wizard
+           category="kr.co.ed.opros.ce"
+           class="kr.co.ed.opros.ce.wizards.OPRoSNewComponentWizard"
+           icon="/icons/Component.bmp"
+           id="kr.co.ed.opros.ce.wizards.OPRoSNewComponentWizard"
+           name="Create New OPRoS Component">
+     </wizard>
+     	<wizard
+     		category="kr.co.ed.opros.ce"
+         	id="kr.co.ed.opros.ce.wizards.OPRoSRSENewConnectionWizard"
+         	class="kr.co.ed.opros.ce.wizards.OPRoSRSENewConnectionWizard"
+         	name="Connection for Remote Debug"
+         	icon="/icons/RemoteDebugConection.gif" >
+     	</wizard>
+   </extension>
+   <extension
+        point="org.eclipse.ui.editors">
+       <editor
+             class="kr.co.ed.opros.ce.editors.MultiPageEditor"
+             contributorClass="kr.co.ed.opros.ce.editors.MultiPageEditorContributor"
+             default="true"
+             icon="/icons/newIcon/GUIProfileEditor/component_icon.png"
+             id="kr.co.ed.opros.ce.editors.OPRoSGUIProfileEditor"
+             name="OPRoS GUI Profile Editor">
+          	<contentTypeBinding
+				contentTypeId="kr.co.ed.opros.ce.editor.OPRoSComponent">
+			</contentTypeBinding>
+       </editor>
+       <editor
+             class="kr.co.ed.opros.ce.editors.OPRoSManifestEditor"
+             default="true"
+             icon="/icons/dependencies.gif"
+             id="kr.co.ed.opros.ce.editors.OPRoSDependenciesEditor"
+             name="OPRoS Manifest Editor">
+             <contentTypeBinding
+				contentTypeId="kr.co.ed.opros.ce.component.manifest">
+			</contentTypeBinding>
+       </editor> 
+   	</extension>
+	<extension point="org.eclipse.cdt.managedbuilder.core.buildProperties">
+  		<propertyValue 
+  			id="kr.co.ed.opros.ce.managedbuild.buildArtefactType.base" 
+  			name="OPRoS ArtefactType" 
+  			property="org.eclipse.cdt.build.core.buildArtefactType" /> 
+  	</extension>
+	<extension 
+		point="org.eclipse.cdt.managedbuilder.core.buildDefinitions">
+		<toolChain 
+			archList="all" 
+			configurationEnvironmentSupplier="org.eclipse.cdt.managedbuilder.gnu.mingw.MingwEnvironmentVariableSupplier" 
+			id="kr.co.ed.opros.ce.managedbuilder.toolchain.MinGW.base" 
+			isToolChainSupported="org.eclipse.cdt.managedbuilder.gnu.mingw.MingwIsToolChainSupported" 
+			name="OPRoS MinGW Toolchain" 
+			osList="win32" 
+			targetTool="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base;cdt.managedbuild.tool.gnu.c.linker.mingw.base;cdt.managedbuild.tool.gnu.archiver">
+  			<targetPlatform 
+  				binaryParser="org.eclipse.cdt.core.PE;org.eclipse.cdt.core.ELF" 
+  				id="kr.co.ed.opros.ce.managedbuild.targetplatform.base" 
+  				name="OPRoS Target Platform" 
+  				osList="win32" 
+  				archList="all" /> 
+  			<builder
+           id="kr.co.ed.opros.ce.managedbuild.builder.base"
+           superClass="cdt.managedbuild.target.gnu.builder"/> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.gnu.archiver.mingw.base" 
+  				superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.cpp.assembler" 
+  				name="OPRoS C++ Assembler" 
+  				superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.cpp.compiler" 
+  				name="OPRoS C++ Compiler" 
+  				superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.c.compiler" 
+  				name="OPRoS C Compiler" 
+  				superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.c.linker" 
+  				name="OPRoS C Linker" 
+  				superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.cpp.linker" 
+  				name="OPRoS C++ Linker" 
+  				superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base" /> 
+  		</toolChain>
+  		<toolChain 
+			archList="all" 
+			configurationEnvironmentSupplier="org.eclipse.cdt.managedbuilder.gnu.mingw.MingwEnvironmentVariableSupplier" 
+			id="kr.co.ed.opros.ce.managedbuilder.toolchain.MSVC.base" 
+			isToolChainSupported="org.eclipse.cdt.managedbuilder.gnu.mingw.MingwIsToolChainSupported" 
+			name="OPRoS MSVC Toolchain" 
+			osList="win32" 
+			targetTool="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base;cdt.managedbuild.tool.gnu.c.linker.mingw.base;cdt.managedbuild.tool.gnu.archiver">
+  			<targetPlatform 
+  				binaryParser="org.eclipse.cdt.core.PE" 
+  				id="kr.co.ed.opros.ce.managedbuild.targetplatform.MSVC.base" 
+  				name="OPRoS Target Platform" 
+  				osList="win32" 
+  				archList="all" /> 
+  			<builder 
+  				id="kr.co.ed.opros.ce.managedbuild.builder.MSVC.base" 
+  				superClass="cdt.managedbuild.target.gnu.builder"
+  				command="nmake"/> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.gnu.archiver.mingw.MSVC.base" 
+  				superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.cpp.assembler.MSVC" 
+  				name="OPRoS C++ Assembler" 
+  				superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.cpp.compiler.MSVC" 
+  				name="OPRoS C++ Compiler" 
+  				superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.c.compiler.MSVC" 
+  				name="OPRoS C Compiler" 
+  				superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.c.linker.MSVC" 
+  				name="OPRoS C Linker" 
+  				superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base" /> 
+  			<tool 
+  				id="kr.co.ed.opros.ce.managedbuild.tool.cpp.linker.MSVC" 
+  				name="OPRoS C++ Linker" 
+  				superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base" /> 
+  		</toolChain>
+		<projectType 
+			buildArtefactType="kr.co.ed.opros.ce.managedbuild.buildArtefactType.base" 
+			id="kr.co.ed.opros.ce.managedbuilder.project.base" 
+			isAbstract="true" 
+			name="OPRoS Project Type">
+			<configuration 
+				buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
+				cleanCommand="rm -rf" 
+				id="kr.co.ed.opros.ce.managedbuilder.config.debug" 
+				name="OPRoS MinGW Debug" 
+				parent="cdt.managedbuild.config.gnu.base">
+  				<toolChain 
+  					id="kr.co.ed.opros.ce.managedbuilder.toolchain.debug" 
+  					superClass="kr.co.ed.opros.ce.managedbuilder.toolchain.MinGW.base" /> 
+  			</configuration>
+			<configuration 
+				buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
+				cleanCommand="rm -rf" 
+				id="kr.co.ed.opros.ce.managedbuilder.config.release" 
+				name="OPRoS MinGW Release" 
+				parent="cdt.managedbuild.config.gnu.base">
+  				<toolChain 
+  					id="kr.co.ed.opros.ce.managedbuilder.toolchain.release" 
+  					superClass="kr.co.ed.opros.ce.managedbuilder.toolchain.MinGW.base" /> 
+  			</configuration>
+  		</projectType>
+  		<projectType
+          buildArtefactType="kr.co.ed.opros.ce.managedbuild.buildArtefactType.base"
+          id="kr.co.ed.opros.ce.managedbuilder.project.MSVC.base"
+          isAbstract="true"
+          name="OPRoS MSVC Project Type">
+			<configuration 
+				buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
+				cleanCommand="rm -rf" 
+				id="kr.co.ed.opros.ce.managedbuilder.config.MSVC.debug" 
+				name="Debug" 
+				parent="cdt.managedbuild.config.gnu.base">
+  				<toolChain 
+  					id="kr.co.ed.opros.ce.managedbuilder.toolchain.MSVC.debug" 
+  					superClass="kr.co.ed.opros.ce.managedbuilder.toolchain.MSVC.base" /> 
+  			</configuration>
+			<configuration 
+				buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
+				cleanCommand="rm -rf" 
+				id="kr.co.ed.opros.ce.managedbuilder.config.MSVC.release" 
+				name="Release" 
+				parent="cdt.managedbuild.config.gnu.base">
+  				<toolChain 
+  					id="kr.co.ed.opros.ce.managedbuilder.toolchain.MSVC.release" 
+  					superClass="kr.co.ed.opros.ce.managedbuilder.toolchain.MSVC.base" /> 
+  			</configuration>
+  		</projectType>
+  	</extension>
+ <extension
+       id="cdt.managed.build.info"
+       name="Managed Build Tools Description"
+       point="org.eclipse.cdt.managedbuilder.core.buildDefinitions">
+    <managedBuildRevision
+          fileVersion="3.0.0">
+    </managedBuildRevision>
+    <tool
+          command="gcc"
+          id="cdt.managedbuild.tool.arm.gnu.c.linker"
+          name="GCC C Linker"
+          natureFilter="cnature"
+          outputFlag="-o">
+       <supportedProperties>
+          <property
+                id="org.eclipse.cdt.build.core.buildArtefactType">
+             <value
+                   id="kr.co.ed.opros.ce.managedbuild.buildArtefactType.base">
+             </value>
+             <value
+                   id="org.eclipse.cdt.build.core.buildArtefactType.exe">
+             </value>
+             <value
+                   id="org.eclipse.cdt.build.core.buildArtefactType.sharedLib">
+             </value>
+          </property>
+       </supportedProperties>
+       <envVarBuildPath
+             pathType="buildpathLibrary"
+             variableList="LIBRARY_PATH">
+       </envVarBuildPath>
+       <optionCategory
+             id="arm.gnu.c.link.category.general"
+             name="General"
+             owner="cdt.managedbuild.tool.arm.gnu.c.linker">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.link.category.general"
+             command="-nostartfiles"
+             defaultValue="false"
+             id="arm.gnu.c.link.option.nostart"
+             name="Do not use standard start files (-nostartfiles)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.link.category.general"
+             command="-nodefaultlibs"
+             defaultValue="false"
+             id="arm.gnu.c.link.option.nodeflibs"
+             name="Do not use default libraries (-nodefaultlibs)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.link.category.general"
+             command="-nostdlib"
+             defaultValue="false"
+             id="arm.gnu.c.link.option.nostdlibs"
+             name="No startup or default libs (-nostdlib)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.link.category.general"
+             command="-s"
+             defaultValue="false"
+             id="arm.gnu.c.link.option.strip"
+             name="Omit all symbol information (-s)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.link.category.general"
+             command="-static"
+             defaultValue="false"
+             id="arm.gnu.c.link.option.noshared"
+             name="No shared libraries (-static)"
+             valueType="boolean">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.link.category.libs"
+             name="Libraries"
+             owner="cdt.managedbuild.tool.arm.gnu.c.linker">
+       </optionCategory>
+       <option
+             browseType="none"
+             category="arm.gnu.c.link.category.libs"
+             command="-l"
+             id="arm.gnu.c.link.option.libs"
+             name="Libraries (-l)"
+             valueType="libs">
+       </option>
+       <option
+             browseType="directory"
+             category="arm.gnu.c.link.category.libs"
+             command="-L"
+             id="arm.gnu.c.link.option.paths"
+             name="Library search path (-L)"
+             valueType="stringList">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.link.category.other"
+             name="Miscellaneous"
+             owner="cdt.managedbuild.tool.arm.gnu.c.linker">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.link.category.other"
+             id="arm.gnu.c.link.option.ldflags"
+             name="Linker flags"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.c.link.category.other"
+             command="-Xlinker ${VALUE}"
+             id="arm.gnu.c.link.option.other"
+             name="Other options (-Xlinker [option])"
+             valueType="stringList">
+       </option>
+       <option
+             browseType="file"
+             category="arm.gnu.c.link.category.other"
+             id="arm.gnu.c.link.option.userobjs"
+             name="Other objects"
+             valueType="userObjs">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.link.category.shared"
+             name="Shared Library Settings"
+             owner="cdt.managedbuild.tool.arm.gnu.c.linker">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.link.category.shared"
+             command="-shared"
+             defaultValue="false"
+             id="arm.gnu.c.link.option.shared"
+             name="Shared (-shared)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.link.category.shared"
+             command="-Wl,-soname="
+             id="arm.gnu.c.link.option.soname"
+             name="Shared object name (-Wl,-soname=)"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.c.link.category.shared"
+             command="-Wl,--out-implib="
+             id="arm.gnu.c.link.option.implname"
+             name="Import Library name (-Wl,--out-implib=)"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.c.link.category.shared"
+             command="-Wl,--output-def="
+             id="arm.gnu.c.link.option.defname"
+             name="DEF file name (-Wl,--output-def=)"
+             valueType="string">
+       </option>
+       <inputType
+             buildVariable="OBJS"
+             dependencyCalculator="org.eclipse.cdt.managedbuilder.makegen.internal.DefaultNoDependencyCalculator"
+             id="cdt.managedbuild.tool.arm.gnu.c.linker.input"
+             multipleOfType="true"
+             sourceContentType="org.eclipse.cdt.managedbuilder.core.compiledObjectFile"
+             sources="o">
+          <additionalInput
+                kind="additionalinputdependency"
+                paths="$(USER_OBJS)">
+          </additionalInput>
+          <additionalInput
+                kind="additionalinput"
+                paths="$(LIBS)">
+          </additionalInput>
+       </inputType>
+       <outputType
+             buildVariable="EXECUTABLES"
+             id="cdt.managedbuild.tool.arm.gnu.c.linker.output"
+             nameProvider="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuLinkOutputNameProvider">
+          <enablement
+                type="ALL">
+             <checkOption
+                   optionId="gnu.c.link.option.shared"
+                   value="false">
+             </checkOption>
+          </enablement>
+       </outputType>
+       <outputType
+             buildVariable="LIBRARIES"
+             id="cdt.managedbuild.tool.arm.gnu.c.linker.output.so"
+             nameProvider="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuLinkOutputNameProvider"
+             outputPrefix="lib"
+             outputs="so">
+          <enablement
+                type="ALL">
+             <checkOption
+                   optionId="gnu.c.link.option.shared"
+                   value="true">
+             </checkOption>
+          </enablement>
+       </outputType>
+    </tool>
+    <tool
+          command="g++"
+          id="cdt.managedbuild.tool.arm.gnu.cpp.linker"
+          name="GCC C++ Linker"
+          natureFilter="ccnature"
+          outputFlag="-o">
+       <supportedProperties>
+          <property
+                id="org.eclipse.cdt.build.core.buildArtefactType">
+             <value
+                   id="kr.co.ed.opros.ce.managedbuild.buildArtefactType.base">
+             </value>
+             <value
+                   id="org.eclipse.cdt.build.core.buildArtefactType.exe">
+             </value>
+             <value
+                   id="org.eclipse.cdt.build.core.buildArtefactType.sharedLib">
+             </value>
+          </property>
+       </supportedProperties>
+       <envVarBuildPath
+             pathType="buildpathLibrary"
+             variableList="LIBRARY_PATH">
+       </envVarBuildPath>
+       <optionCategory
+             id="arm.gnu.cpp.link.category.options"
+             name="General"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.linker">
+       </optionCategory>
+       <option
+             category="arm.gnu.cpp.link.category.options"
+             command="-nostartfiles"
+             defaultValue="false"
+             id="arm.gnu.cpp.link.option.nostart"
+             name="Do not use standard start files (-nostartfiles)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.link.category.options"
+             command="-nodefaultlibs"
+             defaultValue="false"
+             id="arm.gnu.cpp.link.option.nodeflibs"
+             name="Do not use default libraries (-nodefaultlibs)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.link.category.options"
+             command="-nostdlib"
+             defaultValue="false"
+             id="arm.gnu.cpp.link.option.nostdlibs"
+             name="No startup or default libs (-nostdlib)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.link.category.options"
+             command="-s"
+             defaultValue="false"
+             id="arm.gnu.cpp.link.option.strip"
+             name="Omit all symbol information (-s)"
+             valueType="boolean">
+       </option>
+       <optionCategory
+             id="arm.gnu.cpp.link.category.libs"
+             name="Libraries"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.linker">
+       </optionCategory>
+       <option
+             browseType="none"
+             category="arm.gnu.cpp.link.category.libs"
+             command="-l"
+             id="arm.gnu.cpp.link.option.libs"
+             name="Libraries (-l)"
+             valueType="libs">
+       </option>
+       <option
+             browseType="directory"
+             category="arm.gnu.cpp.link.category.libs"
+             command="-L"
+             id="arm.gnu.cpp.link.option.paths"
+             name="Library search path (-L)"
+             valueType="stringList">
+       </option>
+       <optionCategory
+             id="arm.gnu.cpp.link.category.other"
+             name="Miscellaneous"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.linker">
+       </optionCategory>
+       <option
+             category="arm.gnu.cpp.link.category.other"
+             id="arm.gnu.cpp.link.option.flags"
+             name="Linker flags"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.cpp.link.category.other"
+             command="-Xlinker ${VALUE}"
+             id="arm.gnu.cpp.link.option.other"
+             name="Other options (-Xlinker [option])"
+             valueType="stringList">
+       </option>
+       <option
+             browseType="file"
+             category="arm.gnu.cpp.link.category.other"
+             id="arm.gnu.cpp.link.option.userobjs"
+             name="Other objects"
+             valueType="userObjs">
+       </option>
+       <optionCategory
+             id="arm.gnu.cpp.link.category.shared"
+             name="Shared Library Settings"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.linker">
+       </optionCategory>
+       <option
+             category="arm.gnu.cpp.link.category.shared"
+             command="-shared"
+             defaultValue="false"
+             id="arm.gnu.cpp.link.option.shared"
+             name="Shared (-shared)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.link.category.shared"
+             command="-Wl,-soname="
+             id="arm.gnu.cpp.link.option.soname"
+             name="Shared object name (-Wl,-soname=)"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.cpp.link.category.shared"
+             command="-Wl,--out-implib="
+             id="arm.gnu.cpp.link.option.implname"
+             name="Import Library name (-Wl,--out-implib=)"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.cpp.link.category.shared"
+             command="-Wl,--output-def="
+             id="arm.gnu.cpp.link.option.defname"
+             name="DEF file name (-Wl,--output-def=)"
+             valueType="string">
+       </option>
+       <inputType
+             buildVariable="OBJS"
+             dependencyCalculator="org.eclipse.cdt.managedbuilder.makegen.internal.DefaultNoDependencyCalculator"
+             id="cdt.managedbuild.tool.arm.gnu.cpp.linker.input"
+             multipleOfType="true"
+             sourceContentType="org.eclipse.cdt.managedbuilder.core.compiledObjectFile"
+             sources="o">
+          <additionalInput
+                kind="additionalinputdependency"
+                paths="$(USER_OBJS)">
+          </additionalInput>
+          <additionalInput
+                kind="additionalinput"
+                paths="$(LIBS)">
+          </additionalInput>
+       </inputType>
+       <outputType
+             buildVariable="EXECUTABLES"
+             id="cdt.managedbuild.tool.arm.gnu.cpp.linker.output"
+             nameProvider="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuLinkOutputNameProvider">
+          <enablement
+                type="ALL">
+             <checkOption
+                   optionId="gnu.cpp.link.option.shared"
+                   value="false">
+             </checkOption>
+          </enablement>
+       </outputType>
+       <outputType
+             buildVariable="LIBRARIES"
+             id="cdt.managedbuild.tool.arm.gnu.cpp.linker.output.so"
+             nameProvider="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuLinkOutputNameProvider"
+             outputPrefix="lib"
+             outputs="so">
+          <enablement
+                type="ALL">
+             <checkOption
+                   optionId="gnu.cpp.link.option.shared"
+                   value="true">
+             </checkOption>
+          </enablement>
+       </outputType>
+    </tool>
+    <tool
+          command="ar"
+          id="cdt.managedbuild.tool.arm.gnu.archiver"
+          isAbstract="true"
+          name="GCC Archiver"
+          natureFilter="both">
+       <supportedProperties>
+          <property
+                id="org.eclipse.cdt.build.core.buildArtefactType">
+             <value
+                   id="org.eclipse.cdt.build.core.buildArtefactType.staticLib">
+             </value>
+          </property>
+       </supportedProperties>
+       <optionCategory
+             id="arm.gnu.lib.category.general"
+             name="General"
+             owner="cdt.managedbuild.tool.arm.gnu.archiver">
+       </optionCategory>
+       <option
+             category="arm.gnu.lib.category.general"
+             defaultValue="-r"
+             id="arm.gnu.both.lib.option.flags"
+             name="Archiver flags"
+             valueType="string">
+       </option>
+       <inputType
+             buildVariable="OBJS"
+             dependencyCalculator="org.eclipse.cdt.managedbuilder.makegen.internal.DefaultNoDependencyCalculator"
+             id="cdt.managedbuild.tool.arm.gnu.archiver.input"
+             multipleOfType="true"
+             sourceContentType="org.eclipse.cdt.managedbuilder.core.compiledObjectFile"
+             sources="o">
+          <additionalInput
+                kind="additionalinputdependency"
+                paths="$(USER_OBJS)">
+          </additionalInput>
+          <additionalInput
+                kind="additionalinput"
+                paths="$(LIBS)">
+          </additionalInput>
+       </inputType>
+       <outputType
+             buildVariable="ARCHIVES"
+             id="cdt.managedbuild.tool.arm.gnu.archiver.output"
+             nameProvider="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuLinkOutputNameProvider"
+             outputPrefix="lib"
+             outputs="a">
+       </outputType>
+    </tool>
+    <tool
+          command="as"
+          id="cdt.managedbuild.tool.arm.gnu.assembler"
+          name="GCC Assembler"
+          natureFilter="both"
+          outputFlag="-o">
+       <optionCategory
+             id="arm.gnu.asm.category.general"
+             name="General"
+             owner="cdt.managedbuild.tool.arm.gnu.assembler">
+       </optionCategory>
+       <option
+             category="arm.gnu.asm.category.general"
+             id="arm.gnu.both.asm.option.flags"
+             name="Assembler flags"
+             valueType="string">
+       </option>
+       <option
+             browseType="directory"
+             category="arm.gnu.asm.category.general"
+             command="-I"
+             id="arm.gnu.both.asm.option.include.paths"
+             name="Include paths (-I)"
+             valueType="includePath">
+       </option>
+       <option
+             category="arm.gnu.asm.category.general"
+             command="-W"
+             defaultValue="false"
+             id="arm.gnu.both.asm.option.warnings.nowarn"
+             name="Suppress warnings (-W)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.asm.category.general"
+             command="-v"
+             defaultValue="false"
+             id="arm.gnu.both.asm.option.version"
+             name="Announce version (-v)"
+             valueType="boolean">
+       </option>
+       <inputType
+             id="cdt.managedbuild.tool.arm.gnu.assembler.input"
+             sourceContentType="org.eclipse.cdt.core.asmSource"
+             sources="s,S">
+       </inputType>
+       <outputType
+             buildVariable="OBJS"
+             id="cdt.managedbuild.tool.arm.gnu.assembler.output"
+             outputs="o">
+       </outputType>
+    </tool>
+    <tool
+          command="gcc"
+          id="cdt.managedbuild.tool.arm.gnu.c.compiler"
+          isAbstract="true"
+          name="GCC C Compiler"
+          natureFilter="cnature"
+          outputFlag="-o">
+       <supportedProperties>
+          <property
+                id="org.eclipse.cdt.build.core.buildType">
+             <value
+                   id="org.eclipse.cdt.build.core.buildType.debug">
+             </value>
+             <value
+                   id="org.eclipse.cdt.build.core.buildType.release">
+             </value>
+          </property>
+       </supportedProperties>
+       <envVarBuildPath
+             pathType="buildpathInclude"
+             variableList="CPATH,C_INCLUDE_PATH">
+       </envVarBuildPath>
+       <optionCategory
+             id="arm.gnu.c.compiler.category.preprocessor"
+             name="Preprocessor"
+             owner="cdt.managedbuild.tool.arm.gnu.c.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.compiler.category.preprocessor"
+             command="-nostdinc"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.preprocessor.nostdinc"
+             name="Do not search system directories (-nostdinc)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.preprocessor"
+             command="-E"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.preprocessor.preprocess"
+             name="Preprocess only (-E)"
+             valueType="boolean">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.compiler.category.symbols"
+             name="Symbols"
+             owner="cdt.managedbuild.tool.arm.gnu.c.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.compiler.category.symbols"
+             command="-D"
+             id="arm.gnu.c.compiler.option.preprocessor.def.symbols"
+             name="Defined symbols (-D)"
+             valueType="definedSymbols">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.symbols"
+             command="-U"
+             id="arm.gnu.c.compiler.option.preprocessor.undef.symbol"
+             name="Undefined symbols (-U)"
+             valueType="stringList">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.compiler.category.dirs"
+             name="Directories"
+             owner="cdt.managedbuild.tool.arm.gnu.c.compiler">
+       </optionCategory>
+       <option
+             browseType="directory"
+             category="arm.gnu.c.compiler.category.dirs"
+             command="-I"
+             id="arm.gnu.c.compiler.option.include.paths"
+             name="Include paths (-I)"
+             valueType="includePath">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.compiler.category.optimization"
+             name="Optimization"
+             owner="cdt.managedbuild.tool.arm.gnu.c.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.compiler.category.optimization"
+             id="arm.gnu.c.compiler.option.optimization.level"
+             name="Optimization Level"
+             valueType="enumerated">
+          <enumeratedOptionValue
+                command="-O0"
+                id="arm.gnu.c.optimization.level.none"
+                isDefault="false"
+                name="None (-O0)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-O1"
+                id="arm.gnu.c.optimization.level.optimize"
+                name="Optimize (-O1)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-O2"
+                id="arm.gnu.c.optimization.level.more"
+                isDefault="true"
+                name="Optimize more (-O2)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-O3"
+                id="arm.gnu.c.optimization.level.most"
+                name="Optimize most (-O3)">
+          </enumeratedOptionValue>
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.optimization"
+             id="arm.gnu.c.compiler.option.optimization.flags"
+             name="Other optimization flags"
+             valueType="string">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.compiler.category.debug"
+             name="Debugging"
+             owner="cdt.managedbuild.tool.arm.gnu.c.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.compiler.category.debug"
+             id="arm.gnu.c.compiler.option.debugging.level"
+             name="Debug Level"
+             valueType="enumerated">
+          <enumeratedOptionValue
+                id="arm.gnu.c.debugging.level.none"
+                isDefault="false"
+                name="None">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-g1"
+                id="arm.gnu.c.debugging.level.minimal"
+                name="Minimal (-g1)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-g"
+                id="arm.gnu.c.debugging.level.default"
+                isDefault="true"
+                name="Default (-g)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-g3"
+                id="arm.gnu.c.debugging.level.max"
+                isDefault="false"
+                name="Maximum (-g3)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-gstabs+"
+                id="arm.gnu.c.debugging.level.nonstop"
+                isDefault="false"
+                name="Nonstop (-gstabs+)">
+          </enumeratedOptionValue>
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.debug"
+             id="arm.gnu.c.compiler.option.debugging.other"
+             name="Other debugging flags"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.debug"
+             command="-pg"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.debugging.gprof"
+             name="Generate gprof information (-pg)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.debug"
+             command="-p"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.debugging.prof"
+             name="Generate prof information (-p)"
+             valueType="boolean">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.compiler.category.warnings"
+             name="Warnings"
+             owner="cdt.managedbuild.tool.arm.gnu.c.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.compiler.category.warnings"
+             command="-fsyntax-only"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.warnings.syntax"
+             name="Check syntax only (-fsyntax-only)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.warnings"
+             command="-pedantic"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.warnings.pedantic"
+             name="Pedantic (-pedantic)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.warnings"
+             command="-pedantic-errors"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.warnings.pedantic.error"
+             name="Pedantic warnings as errors (-pedantic-errors)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.warnings"
+             command="-w"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.warnings.nowarn"
+             name="Inhibit all warnings (-w)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.warnings"
+             command="-Wall"
+             defaultValue="true"
+             id="arm.gnu.c.compiler.option.warnings.allwarn"
+             name="All warnings (-Wall)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.warnings"
+             command="-Werror"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.warnings.toerrors"
+             name="Warnings as errors (-Werror)"
+             valueType="boolean">
+       </option>
+       <optionCategory
+             id="arm.gnu.c.compiler.category.other"
+             name="Miscellaneous"
+             owner="cdt.managedbuild.tool.arm.gnu.c.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.c.compiler.category.other"
+             defaultValue="-c -fmessage-length=0"
+             id="arm.gnu.c.compiler.option.misc.other"
+             name="Other flags"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.other"
+             command="-v"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.misc.verbose"
+             name="Verbose (-v)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.c.compiler.category.other"
+             command="-ansi"
+             defaultValue="false"
+             id="arm.gnu.c.compiler.option.misc.ansi"
+             name="Support ANSI programs (-ansi)"
+             valueType="boolean">
+       </option>
+       <inputType
+             dependencyCalculator="org.eclipse.cdt.managedbuilder.makegen.gnu.DefaultGCCDependencyCalculator"
+             dependencyContentType="org.eclipse.cdt.core.cHeader"
+             dependencyExtensions="h"
+             id="cdt.managedbuild.tool.arm.gnu.c.compiler.input"
+             sourceContentType="org.eclipse.cdt.core.cSource"
+             sources="c">
+       </inputType>
+       <outputType
+             buildVariable="OBJS"
+             id="cdt.managedbuild.tool.arm.gnu.c.compiler.output"
+             outputs="o">
+       </outputType>
+    </tool>
+    <tool
+          command="g++"
+          id="cdt.managedbuild.tool.arm.gnu.cpp.compiler"
+          isAbstract="true"
+          name="GCC C++ Compiler"
+          natureFilter="ccnature"
+          outputFlag="-o">
+       <supportedProperties>
+          <property
+                id="org.eclipse.cdt.build.core.buildType">
+             <value
+                   id="org.eclipse.cdt.build.core.buildType.debug">
+             </value>
+             <value
+                   id="org.eclipse.cdt.build.core.buildType.release">
+             </value>
+          </property>
+       </supportedProperties>
+       <envVarBuildPath
+             pathType="buildpathInclude"
+             variableList="CPATH,CPLUS_INCLUDE_PATH">
+       </envVarBuildPath>
+       <optionCategory
+             id="arm.gnu.cpp.compiler.category.preprocessor"
+             name="Preprocessor"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.cpp.compiler.category.preprocessor"
+             command="-nostdinc"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.preprocessor.nostdinc"
+             name="Do not search system directories (-nostdinc)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.preprocessor"
+             command="-E"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.preprocessor.preprocess"
+             name="Preprocess only (-E)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.preprocessor"
+             command="-D"
+             id="arm.gnu.cpp.compiler.option.preprocessor.def"
+             name="Defined symbols (-D)"
+             valueType="definedSymbols">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.preprocessor"
+             command="-U"
+             id="arm.gnu.cpp.compiler.option.preprocessor.undef"
+             name="Undefined symbols (-U)"
+             valueType="stringList">
+       </option>
+       <optionCategory
+             id="arm.gnu.cpp.compiler.category.dirs"
+             name="Directories"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.compiler">
+       </optionCategory>
+       <option
+             browseType="directory"
+             category="arm.gnu.cpp.compiler.category.dirs"
+             command="-I"
+             id="arm.gnu.cpp.compiler.option.include.paths"
+             name="Include paths (-I)"
+             valueType="includePath">
+       </option>
+       <optionCategory
+             id="arm.gnu.cpp.compiler.category.optimization"
+             name="Optimization"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.cpp.compiler.category.optimization"
+             id="arm.gnu.cpp.compiler.option.optimization.level"
+             name="Optimization Level"
+             valueType="enumerated">
+          <enumeratedOptionValue
+                command="-O0"
+                id="arm.gnu.cpp.compiler.optimization.level.none"
+                name="None (-O0)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-O1"
+                id="arm.gnu.cpp.compiler.optimization.level.optimize"
+                name="Optimize (-O1)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-O2"
+                id="arm.gnu.cpp.compiler.optimization.level.more"
+                isDefault="true"
+                name="Optimize more (-O2)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-O3"
+                id="arm.gnu.cpp.compiler.optimization.level.most"
+                name="Optimize most (-O3)">
+          </enumeratedOptionValue>
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.optimization"
+             id="arm.gnu.cpp.compiler.option.optimization.flags"
+             name="Other optimization flags"
+             valueType="string">
+       </option>
+       <optionCategory
+             id="arm.gnu.cpp.compiler.category.debug"
+             name="Debugging"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.cpp.compiler.category.debug"
+             id="arm.gnu.cpp.compiler.option.debugging.level"
+             name="Debug Level"
+             valueType="enumerated">
+          <enumeratedOptionValue
+                id="arm.gnu.cpp.compiler.debugging.level.none"
+                isDefault="false"
+                name="None">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-g1"
+                id="arm.gnu.cpp.compiler.debugging.level.minimal"
+                name="Minimal (-g1)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-g"
+                id="arm.gnu.cpp.compiler.debugging.level.default"
+                isDefault="true"
+                name="Default (-g)">
+          </enumeratedOptionValue>
+          <enumeratedOptionValue
+                command="-g3"
+                id="arm.gnu.cpp.compiler.debugging.level.max"
+                isDefault="false"
+                name="Maximum (-g3)">
+          </enumeratedOptionValue>
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.debug"
+             id="arm.gnu.cpp.compiler.option.debugging.other"
+             name="Other debugging flags"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.debug"
+             command="-p"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.debugging.prof"
+             name="Generate prof information (-p)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.debug"
+             command="-pg"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.debugging.gprof"
+             name="Generate gprof information (-pg)"
+             valueType="boolean">
+       </option>
+       <optionCategory
+             id="arm.gnu.cpp.compiler.category.warnings"
+             name="Warnings"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.cpp.compiler.category.warnings"
+             command="-fsyntax-only"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.warnings.syntax"
+             name="Check syntax only (-fsyntax-only)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.warnings"
+             command="-pedantic"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.warnings.pedantic"
+             name="Pedantic (-pedantic)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.warnings"
+             command="-pedantic-errors"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.warnings.pedantic.error"
+             name="Pedantic warnings as errors (-pedantic-errors)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.warnings"
+             command="-w"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.warnings.nowarn"
+             name="Inhibit all warnings (-w)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.warnings"
+             command="-Wall"
+             defaultValue="true"
+             id="arm.gnu.cpp.compiler.option.warnings.allwarn"
+             name="All warnings (-Wall)"
+             valueType="boolean">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.warnings"
+             command="-Werror"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.warnings.toerrors"
+             name="Warnings as errors (-Werror)"
+             valueType="boolean">
+       </option>
+       <optionCategory
+             id="arm.gnu.cpp.compiler.category.other"
+             name="Miscellaneous"
+             owner="cdt.managedbuild.tool.arm.gnu.cpp.compiler">
+       </optionCategory>
+       <option
+             category="arm.gnu.cpp.compiler.category.other"
+             defaultValue="-c -fmessage-length=0"
+             id="arm.gnu.cpp.compiler.option.other.other"
+             name="Other flags"
+             valueType="string">
+       </option>
+       <option
+             category="arm.gnu.cpp.compiler.category.other"
+             command="-v"
+             defaultValue="false"
+             id="arm.gnu.cpp.compiler.option.other.verbose"
+             name="Verbose (-v)"
+             valueType="boolean">
+       </option>
+       <inputType
+             dependencyCalculator="org.eclipse.cdt.managedbuilder.makegen.gnu.DefaultGCCDependencyCalculator"
+             dependencyContentType="org.eclipse.cdt.core.cxxHeader"
+             dependencyExtensions="h,H,hpp"
+             id="cdt.managedbuild.tool.arm.gnu.cpp.compiler.input"
+             sourceContentType="org.eclipse.cdt.core.cxxSource"
+             sources="c,C,cc,cxx,cpp">
+       </inputType>
+       <outputType
+             buildVariable="OBJS"
+             id="cdt.managedbuild.tool.arm.gnu.cpp.compiler.output"
+             outputs="o">
+       </outputType>
+    </tool>
+    <builder
+          arguments="-k"
+          buildfileGenerator="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator"
+          cleanBuildTarget="clean"
+          command="make"
+          errorParsers="org.eclipse.cdt.core.MakeErrorParser"
+          id="cdt.managedbuild.target.arm.gnu.builder"
+          ignoreErrCmd="-k"
+          isAbstract="true"
+          isVariableCaseSensitive="true"
+          macroInputDirRelPathValue="$(dir $&lt;)"
+          macroInputFileBaseNameValue="$(basename $(notdir $&lt;))"
+          macroInputFileExtValue="$(suffix $(notdir $&lt;))"
+          macroInputFileNameValue="$(notdir $&lt;)"
+          macroInputFileRelPathValue="$&lt;"
+          macroOutputDirRelPathValue="$(dir $@)"
+          macroOutputFileBaseNameValue="$(basename $(notdir $@))"
+          macroOutputFileExtValue="$(suffix $(notdir $@))"
+          macroOutputFileNameValue="$(notdir $@)"
+          macroOutputFileRelPathValue="$@"
+          name="Arm Gnu Make Builder"
+          parallelBuildCmd="-j*"
+          reservedMacroNames="ROOT,DEPS,OBJS,.*_SRCS,EXECUTABLES,SUBDIRS,LIBS,USER_OBJS,.*_INPUTS,.*_OUTPUTS"
+          variableFormat="${=}">
+    </builder>
+ </extension>
+ <extension
+       id="cdt.managed.build.info"
+       name="Managed Build Tools Description"
+       point="org.eclipse.cdt.managedbuilder.core.buildDefinitions">
+    <toolChain
+          archList="all"
+          id="cdt.managedbuild.toolchain.arm.gnu.arm.base"
+          name="ARM GCC for Application"
+          osList="all"
+          targetTool="cdt.managedbuild.tool.arm.gnu.arm.c.linker.base;cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.base;cdt.managedbuild.tool.arm.gnu.arm.archiver.base">
+       <targetPlatform
+             archList="all"
+             binaryParser="org.eclipse.cdt.core.ELF"
+             id="cdt.managedbuild.target.arm.gnu.arm.platform.base"
+             name="Debug Platform"
+             osList="all">
+       </targetPlatform>
+       <builder
+             autoBuildTarget="all"
+             id="cdt.managedbuild.target.arm.gnu.arm.builder.base"
+             incrementalBuildTarget="all"
+             name="ARM Builder"
+             superClass="cdt.managedbuild.target.arm.gnu.builder">
+       </builder>
+       <tool
+             command="arm-linux-ar"
+             id="cdt.managedbuild.tool.arm.gnu.arm.archiver.base"
+             name="ARM Archiver"
+             superClass="cdt.managedbuild.tool.arm.gnu.archiver">
+          <enablement
+                type="ALL">
+             <checkBuildProperty
+                   property="org.eclipse.cdt.build.core.buildArtefactType"
+                   value="org.eclipse.cdt.build.core.buildArtefactType.staticLib">
+             </checkBuildProperty>
+          </enablement>
+       </tool>
+       <tool
+             command="arm-none-eabi-g++"
+             id="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.base"
+             name="ARM C++ Compiler"
+             superClass="cdt.managedbuild.tool.arm.gnu.cpp.compiler">
+       </tool>
+       <tool
+             command="arm-angstrom-linux-gnueabi-gcc"
+             id="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.base"
+             name="ARM C Compiler"
+             superClass="cdt.managedbuild.tool.arm.gnu.c.compiler">
+       </tool>
+       <tool
+             command="arm-angstrom-linux-gnueabi-gcc"
+             id="cdt.managedbuild.tool.arm.gnu.arm.c.linker.base"
+             name="ARM C Linker"
+             superClass="cdt.managedbuild.tool.arm.gnu.c.linker">
+          <enablement
+                type="ALL">
+             <not>
+                <checkBuildProperty
+                      property="org.eclipse.cdt.build.core.buildArtefactType"
+                      value="org.eclipse.cdt.build.core.buildArtefactType.staticLib">
+                </checkBuildProperty>
+             </not>
+          </enablement>
+       </tool>
+       <tool
+             command="arm-none-eabi-g++"
+             id="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.base"
+             name="ARM C++ Linker"
+             superClass="cdt.managedbuild.tool.arm.gnu.cpp.linker">
+          <enablement
+                type="ALL">
+             <not>
+                <checkBuildProperty
+                      property="org.eclipse.cdt.build.core.buildArtefactType"
+                      value="org.eclipse.cdt.build.core.buildArtefactType.staticLib">
+                </checkBuildProperty>
+             </not>
+          </enablement>
+       </tool>
+       <tool
+             command="arm-angstrom-linux-gnueabi-as"
+             id="cdt.managedbuild.tool.arm.gnu.arm.assembler.base"
+             name="ARM Assembler"
+             superClass="cdt.managedbuild.tool.arm.gnu.assembler">
+       </tool>
+    </toolChain>
+    <configuration
+          cleanCommand="rm -rf"
+          id="cdt.managedbuild.config.arm.gnu.arm.base">
+       <enablement
+             attribute="artifactExtension"
+             extensionAdjustment="false"
+             type="CONTAINER_ATTRIBUTE"
+             value="so">
+          <checkBuildProperty
+                property="org.eclipse.cdt.build.core.buildArtefactType"
+                value="org.eclipse.cdt.build.core.buildArtefactType.sharedLib">
+          </checkBuildProperty>
+       </enablement>
+       <enablement
+             attribute="artifactExtension"
+             extensionAdjustment="false"
+             type="CONTAINER_ATTRIBUTE"
+             value="a">
+          <checkBuildProperty
+                property="org.eclipse.cdt.build.core.buildArtefactType"
+                value="org.eclipse.cdt.build.core.buildArtefactType.staticLib">
+          </checkBuildProperty>
+       </enablement>
+    </configuration>
+    <projectType
+          buildArtefactType="kr.co.ed.opros.ce.managedbuild.buildArtefactType.base"
+          id="cdt.managedbuild.target.arm.gnu.arm.exe"
+          isTest="false">
+       <configuration
+             buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
+             cleanCommand="rm -rf"
+             id="cdt.managedbuild.config.arm.gnu.arm.exe.debug"
+             name="Debug"
+             parent="cdt.managedbuild.config.arm.gnu.arm.base">
+          <toolChain
+                archList="all"
+                id="cdt.managedbuild.toolchain.arm.gnu.arm.exe.debug"
+                osList="all"
+                scannerConfigDiscoveryProfileId="kr.co.ed.opros.toolchains.ARMProjectProfile"
+                superClass="cdt.managedbuild.toolchain.arm.gnu.arm.base"
+                targetTool="cdt.managedbuild.tool.arm.gnu.arm.c.linker.exe.debug;cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.exe.debug">
+             <targetPlatform
+                   archList="all"
+                   binaryParser="org.eclipse.cdt.core.ELF"
+                   id="cdt.managedbuild.target.arm.gnu.arm.platform.exe.debug"
+                   osList="all"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.platform.base">
+             </targetPlatform>
+             <builder
+                   arguments="-k"
+                   buildfileGenerator="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator"
+                   command="make"
+                   id="cdt.managedbuild.target.arm.gnu.arm.builder.exe.debug"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.builder.base">
+             </builder>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.exe.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.base">
+                <option
+                      defaultValue="arm.gnu.arm.c.optimization.level.none"
+                      id="arm.gnu.arm.c.compiler.exe.debug.option.optimization.level"
+                      superClass="arm.gnu.c.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.c.debugging.level.max"
+                      id="arm.gnu.arm.c.compiler.exe.debug.option.debugging.level"
+                      superClass="arm.gnu.c.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.exe.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.base">
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.optimization.level.none"
+                      id="arm.gnu.arm.cpp.compiler.exe.debug.option.optimization.level"
+                      superClass="arm.gnu.cpp.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.debugging.level.max"
+                      id="arm.gnu.arm.cpp.compiler.exe.debug.option.debugging.level"
+                      superClass="arm.gnu.cpp.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.linker.exe.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.linker.base">
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.exe.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.base">
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.assembler.exe.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.assembler.base">
+             </tool>
+          </toolChain>
+       </configuration>
+       <configuration
+             buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
+             cleanCommand="rm -rf"
+             id="cdt.managedbuild.config.arm.gnu.arm.exe.release"
+             name="Release"
+             parent="cdt.managedbuild.config.arm.gnu.arm.base">
+          <toolChain
+                archList="all"
+                id="cdt.managedbuild.toolchain.arm.gnu.arm.arm.exe.release"
+                osList="all"
+                scannerConfigDiscoveryProfileId="kr.co.ed.opros.toolchains.ARMProjectProfile"
+                superClass="cdt.managedbuild.toolchain.arm.gnu.arm.base"
+                targetTool="cdt.managedbuild.tool.arm.gnu.arm.c.linker.exe.release;cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.exe.release">
+             <targetPlatform
+                   archList="all"
+                   binaryParser="org.eclipse.cdt.core.ELF"
+                   id="cdt.managedbuild.target.arm.gnu.arm.platform.exe.release"
+                   name="Release Platform"
+                   osList="all"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.platform.base">
+             </targetPlatform>
+             <builder
+                   arguments="-k"
+                   buildfileGenerator="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator"
+                   command="make"
+                   id="cdt.managedbuild.target.arm.gnu.arm.builder.exe.release"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.builder.base">
+             </builder>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.exe.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.base">
+                <option
+                      defaultValue="arm.gnu.c.optimization.level.most"
+                      id="arm.gnu.arm.c.compiler.exe.release.option.optimization.level"
+                      superClass="arm.gnu.c.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.c.debugging.level.none"
+                      id="arm.gnu.arm.c.compiler.exe.release.option.debugging.level"
+                      superClass="arm.gnu.c.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.exe.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.base">
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.optimization.level.most"
+                      id="arm.gnu.arm.cpp.compiler.exe.release.option.optimization.level"
+                      superClass="arm.gnu.cpp.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.debugging.level.none"
+                      id="arm.gnu.arm.cpp.compiler.exe.release.option.debugging.level"
+                      superClass="arm.gnu.cpp.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.linker.exe.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.linker.base">
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.exe.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.base">
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.assembler.exe.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.assembler.base">
+             </tool>
+          </toolChain>
+       </configuration>
+    </projectType>
+    <projectType
+          buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib"
+          id="cdt.managedbuild.target.arm.gnu.arm.so"
+          isTest="false">
+       <configuration
+             artifactExtension="so"
+             buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
+             cleanCommand="rm -rf"
+             errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser"
+             id="cdt.managedbuild.config.arm.gnu.arm.so.debug"
+             name="Debug"
+             parent="cdt.managedbuild.config.arm.gnu.arm.base">
+          <toolChain
+                archList="all"
+                id="cdt.managedbuild.toolchain.arm.gnu.arm.so.debug"
+                osList="all"
+                scannerConfigDiscoveryProfileId="kr.co.ed.opros.toolchains.ARMProjectProfile"
+                superClass="cdt.managedbuild.toolchain.arm.gnu.arm.base"
+                targetTool="cdt.managedbuild.tool.arm.gnu.arm.c.linker.so.debug;cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.so.debug">
+             <targetPlatform
+                   archList="all"
+                   binaryParser="org.eclipse.cdt.core.ELF"
+                   id="cdt.managedbuild.target.arm.gnu.arm.platform.so.debug"
+                   osList="all"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.platform.base">
+             </targetPlatform>
+             <builder
+                   arguments="-k"
+                   buildfileGenerator="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator"
+                   id="cdt.managedbuild.target.arm.gnu.arm.builder.so.debug"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.builder.base">
+             </builder>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.so.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.base">
+                <option
+                      defaultValue="arm.gnu.c.optimization.level.none"
+                      id="arm.gnu.arm.c.compiler.so.debug.option.optimization.level"
+                      superClass="arm.gnu.c.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.c.debugging.level.max"
+                      id="arm.gnu.arm.c.compiler.so.debug.option.debugging.level"
+                      superClass="arm.gnu.c.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.so.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.base">
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.optimization.level.none"
+                      id="arm.gnu.arm.cpp.compiler.so.debug.option.optimization.level"
+                      superClass="arm.gnu.cpp.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.debugging.level.max"
+                      id="arm.gnu.arm.cpp.compiler.so.debug.option.debugging.level"
+                      superClass="arm.gnu.cpp.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.linker.so.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.linker.base">
+                <option
+                      defaultValue="true"
+                      id="arm.gnu.arm.c.link.so.debug.option.shared"
+                      superClass="arm.gnu.c.link.option.shared">
+                </option>
+                <outputType
+                      buildVariable="LIBRARIES"
+                      id="cdt.managedbuild.tool.arm.gnu.arm.c.linker.so.debug.output"
+                      outputPrefix="lib"
+                      outputs="so"
+                      superClass="cdt.managedbuild.tool.arm.gnu.c.linker.output">
+                </outputType>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.so.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.base">
+                <option
+                      defaultValue="true"
+                      id="arm.gnu.arm.cpp.link.so.debug.option.shared"
+                      superClass="arm.gnu.cpp.link.option.shared">
+                </option>
+                <outputType
+                      buildVariable="LIBRARIES"
+                      id="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.so.debug.output"
+                      outputPrefix="lib"
+                      outputs="so"
+                      superClass="cdt.managedbuild.tool.arm.gnu.cpp.linker.output">
+                </outputType>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.assembler.so.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.assembler.base">
+             </tool>
+          </toolChain>
+       </configuration>
+       <configuration
+             artifactExtension="so"
+             buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
+             cleanCommand="rm -rf"
+             errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser"
+             id="cdt.managedbuild.config.arm.gnu.arm.so.release"
+             name="Release"
+             parent="cdt.managedbuild.config.arm.gnu.arm.base">
+          <toolChain
+                archList="all"
+                id="cdt.managedbuild.toolchain.arm.gnu.arm.so.release"
+                osList="all"
+                scannerConfigDiscoveryProfileId="kr.co.ed.opros.toolchains.ARMProjectProfile"
+                superClass="cdt.managedbuild.toolchain.arm.gnu.arm.base"
+                targetTool="cdt.managedbuild.tool.arm.gnu.arm.c.linker.so.release;cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.so.release">
+             <targetPlatform
+                   archList="all"
+                   binaryParser="org.eclipse.cdt.core.ELF"
+                   id="cdt.managedbuild.target.arm.gnu.arm.platform.so.release"
+                   osList="all"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.platform.base">
+             </targetPlatform>
+             <builder
+                   arguments="-k"
+                   buildfileGenerator="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator"
+                   id="cdt.managedbuild.target.arm.gnu.arm.builder.so.release"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.builder.base">
+             </builder>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.so.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.base">
+                <option
+                      defaultValue="arm.gnu.c.optimization.level.most"
+                      id="arm.gnu.arm.c.compiler.so.release.option.optimization.level"
+                      superClass="arm.gnu.c.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.c.debugging.level.none"
+                      id="arm.gnu.arm.c.compiler.so.release.option.debugging.level"
+                      superClass="arm.gnu.c.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.so.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.base">
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.optimization.level.most"
+                      id="arm.gnu.arm.cpp.compiler.so.release.option.optimization.level"
+                      superClass="arm.gnu.cpp.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.debugging.level.none"
+                      id="arm.gnu.arm.cpp.compiler.so.release.option.debugging.level"
+                      superClass="arm.gnu.cpp.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.linker.so.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.linker.base">
+                <option
+                      defaultValue="true"
+                      id="arm.gnu.arm.c.link.so.release.option.shared"
+                      superClass="arm.gnu.c.link.option.shared">
+                </option>
+                <outputType
+                      buildVariable="LIBRARIES"
+                      id="cdt.managedbuild.tool.arm.gnu.arm.c.linker.so.release.output"
+                      outputPrefix="lib"
+                      outputs="so"
+                      superClass="cdt.managedbuild.tool.arm.gnu.c.linker.output">
+                </outputType>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.so.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.base">
+                <option
+                      defaultValue="true"
+                      id="arm.gnu.arm.cpp.link.so.release.option.shared"
+                      superClass="arm.gnu.cpp.link.option.shared">
+                </option>
+                <outputType
+                      buildVariable="LIBRARIES"
+                      id="cdt.managedbuild.tool.arm.gnu.arm.cpp.linker.so.release.output"
+                      outputPrefix="lib"
+                      outputs="so"
+                      superClass="cdt.managedbuild.tool.arm.gnu.cpp.linker.output">
+                </outputType>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.assembler.so.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.assembler.base">
+             </tool>
+          </toolChain>
+       </configuration>
+    </projectType>
+    <projectType
+          buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib"
+          id="cdt.managedbuild.target.arm.gnu.arm.lib"
+          isTest="false">
+       <configuration
+             artifactExtension="a"
+             buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
+             cleanCommand="rm -rf"
+             errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser"
+             id="cdt.managedbuild.config.arm.gnu.arm.lib.debug"
+             name="Debug"
+             parent="cdt.managedbuild.config.arm.gnu.arm.base">
+          <toolChain
+                archList="all"
+                id="cdt.managedbuild.toolchain.arm.gnu.arm.lib.debug"
+                osList="all"
+                scannerConfigDiscoveryProfileId="kr.co.ed.opros.toolchains.ARMProjectProfile"
+                superClass="cdt.managedbuild.toolchain.arm.gnu.arm.base"
+                targetTool="cdt.managedbuild.tool.arm.gnu.arm.archiver.lib.debug">
+             <targetPlatform
+                   archList="all"
+                   binaryParser="org.eclipse.cdt.core.ELF"
+                   id="cdt.managedbuild.target.arm.gnu.arm.platform.lib.debug"
+                   osList="all"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.platform.base">
+             </targetPlatform>
+             <builder
+                   arguments="-k"
+                   buildfileGenerator="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator"
+                   command="make"
+                   id="cdt.managedbuild.target.arm.gnu.arm.builder.lib.debug"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.builder.base">
+             </builder>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.lib.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.base">
+                <option
+                      defaultValue="arm.gnu.c.optimization.level.none"
+                      id="arm.gnu.arm.c.compiler.lib.debug.option.optimization.level"
+                      superClass="arm.gnu.c.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.c.debugging.level.max"
+                      id="arm.gnu.arm.c.compiler.lib.debug.option.debugging.level"
+                      superClass="arm.gnu.c.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.lib.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.base">
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.optimization.level.none"
+                      id="arm.gnu.arm.cpp.compiler.lib.debug.option.optimization.level"
+                      superClass="arm.gnu.cpp.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.debugging.level.max"
+                      id="arm.gnu.arm.cpp.compiler.lib.debug.option.debugging.level"
+                      superClass="arm.gnu.cpp.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.archiver.lib.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.archiver.base">
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.assembler.lib.debug"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.assembler.base">
+             </tool>
+          </toolChain>
+       </configuration>
+       <configuration
+             artifactExtension="a"
+             buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
+             cleanCommand="rm -rf"
+             errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser"
+             id="cdt.managedbuild.config.arm.gnu.arm.lib.release"
+             name="Release"
+             parent="cdt.managedbuild.config.arm.gnu.arm.base">
+          <toolChain
+                archList="arm"
+                id="cdt.managedbuild.toolchain.arm.gnu.arm.lib.release"
+                osList="all"
+                scannerConfigDiscoveryProfileId="kr.co.ed.opros.toolchains.ARMProjectProfile"
+                superClass="cdt.managedbuild.toolchain.arm.gnu.arm.base"
+                targetTool="cdt.managedbuild.tool.arm.gnu.arm.archiver.lib.release">
+             <targetPlatform
+                   archList="all"
+                   binaryParser="org.eclipse.cdt.core.ELF"
+                   id="cdt.managedbuild.target.arm.gnu.arm.platform.lib.release"
+                   osList="all"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.platform.base">
+             </targetPlatform>
+             <builder
+                   arguments="-k"
+                   buildfileGenerator="org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator"
+                   command="make"
+                   id="cdt.managedbuild.target.arm.gnu.arm.builder.lib.release"
+                   superClass="cdt.managedbuild.target.arm.gnu.arm.builder.base">
+             </builder>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.lib.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.c.compiler.base">
+                <option
+                      defaultValue="arm.gnu.c.optimization.level.most"
+                      id="arm.gnu.arm.c.compiler.lib.release.option.optimization.level"
+                      superClass="arm.gnu.c.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.c.debugging.level.none"
+                      id="arm.gnu.arm.c.compiler.lib.release.option.debugging.level"
+                      superClass="arm.gnu.c.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.lib.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.cpp.compiler.base">
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.optimization.level.most"
+                      id="arm.gnu.arm.cpp.compiler.lib.release.option.optimization.level"
+                      superClass="arm.gnu.cpp.compiler.option.optimization.level">
+                </option>
+                <option
+                      defaultValue="arm.gnu.cpp.compiler.debugging.level.none"
+                      id="arm.gnu.arm.cpp.compiler.lib.release.option.debugging.level"
+                      superClass="arm.gnu.cpp.compiler.option.debugging.level">
+                </option>
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.archiver.lib.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.archiver.base">
+             </tool>
+             <tool
+                   id="cdt.managedbuild.tool.arm.gnu.arm.assembler.lib.release"
+                   superClass="cdt.managedbuild.tool.arm.gnu.arm.assembler.base">
+             </tool>
+          </toolChain>
+       </configuration>
+    </projectType>
+ </extension>
+  	<extension point="org.eclipse.ui.actionSets">
+		<actionSet 
+			label="OPRoS ActionSets" 
+			visible="ture" 
+			id="kr.co.ed.opros.ce.workbenchActionSet">
+			 <action
+		           class="kr.co.ed.opros.ce.ui.actions.PackagingComponent"
+		           icon="icons/export.png"
+		           id="kr.co.ed.opros.ce.packaging"
+		           label="Packaging"
+		           menubarPath="kr.co.ed.opros.ce.workbenchMenu/contents"
+		           style="push"
+		           toolbarPath="Normal/additions"
+		           tooltip="Packaging component">
+		     </action>
+			<action
+				id="kr.co.ed.opros.ce.RemoteDebugOPRoSProject"
+				label="Remote Debug OPRoS Component"
+				icon="/icons/RemoteDebug.gif" 
+				tooltip="Remote Debug OPRoS Component"
+				menubarPath="kr.co.ed.opros.ce.workbenchMenu/contents"
+	            toolbarPath="Normal/additions"
+	            class="kr.co.ed.opros.ce.ui.actions.RemoteDebugOPRoSProjectActionDelegate"/>
+	        <action
+				id="kr.co.ed.opros.ce.SendComponentToRobot"
+				label="Send OPRoS Component to Robot"
+				icon="/icons/SendComp.gif" 
+				tooltip="Send OPRoS Component to Robot"
+				menubarPath="kr.co.ed.opros.ce.workbenchMenu/contents"
+	            toolbarPath="Normal/additions"
+	            class="kr.co.ed.opros.ce.ui.actions.SendComponentToRobotActionDelegate"/>
+			<action
+				id="kr.co.ed.opros.ce.DebugOPRoSProject"
+				label="Debug OPRoS Component"
+				icon="/icons/debug_icon.gif" 
+				tooltip="Debug OPRoS Component"
+				menubarPath="kr.co.ed.opros.ce.workbenchMenu/contents"
+	            toolbarPath="Normal/additions"
+	            class="kr.co.ed.opros.ce.ui.actions.DebugOPRoSProjectActionDelegate"/>
+			<action
+				id="kr.co.ed.opros.ce.openOPRoSStageModeler"
+				label="Open Stage Modeler"
+				icon="/icons/StageEditor.ico"
+				tooltip="Open Stage Modeler"
+				menubarPath="kr.co.ed.opros.ce.workbenchMenu/contents"
+				toolbarPath="Normal/additions"
+				class="kr.co.ed.opros.ce.ui.actions.OpenOPRoSStageModelerActionDelegate"/>
+			<action
+				id="kr.co.ed.opros.ce.openOPRoSRobotModeler"
+				label="Open Robot Modeler"
+				icon="/icons/RobotEditor.ico"
+				tooltip="Open Robot Modeler"
+				menubarPath="kr.co.ed.opros.ce.workbenchMenu/contents"
+				toolbarPath="Normal/additions"
+				class="kr.co.ed.opros.ce.ui.actions.OpenOPRoSRobotModelerActionDelegate"/>
+			<menu 
+				label="OPRoS" 
+				path="additions" 
+				id="kr.co.ed.opros.ce.workbenchMenu">
+  				<groupMaker 
+  					name="contents" /> 
+  				<separator 
+  					name="additions" /> 
+  			</menu>
+  			<action 
+  				id="kr.co.ed.opros.ce.openOPRoSNewProjectWizard" 
+  				label="Create New OPRoS Project" 
+  				icon="/icons/newIcon/opros.png" 
+  				tooltip="Open New OPRoS Project Wizard for OPRoS Project Creation" 
+  				menubarPath="kr.co.ed.opros.ce.workbenchMenu/contents" 
+  				toolbarPath="Normal/additions" 
+  				class="kr.co.ed.opros.ce.ui.actions.OpenOPRoSNewProjectWizardActionDelegate" />
+  		</actionSet>
+  	</extension>
+  	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution 
+			objectClass="org.eclipse.core.resources.IResource" 
+			adaptable="true" id="kr.co.ed.opros.ce.popupMenu">
+			<menu 
+				label="OPRoS" 
+				path="additions" 
+				id="kr.co.ed.opros.ce.popupSubMenu">
+  				<groupMarker 
+  					name="content" /> 
+  				<separator 
+  					name="additions" /> 
+  			</menu>
+  			<action 
+  				id="kr.co.ed.opros.ce.modifyOPRoSComponent" 
+  				label="Modify OPRoS Component" 
+  				icon="/icons/Component.bmp" 
+  				menubarPath="kr.co.ed.opros.ce.popupSubMenu/content" 
+  				enablesFor="1" 
+  				class="kr.co.ed.opros.ce.ui.actions.OpenOPRoSComponentProfileEditorActionDelegate" />
+			<action 
+  				id="kr.co.ed.opros.ce.SendComponentToRobot" 
+  				label="Send OPRoS Component to Robot" 
+  				icon="/icons/SendComp.gif" 
+  				menubarPath="kr.co.ed.opros.ce.popupSubMenu/content" 
+  				enablesFor="1" 
+  				class="kr.co.ed.opros.ce.ui.actions.SendComponentToRobotActionDelegate" />
+		   <action
+		         class="kr.co.ed.opros.ce.ui.actions.UserComponentRegisterActionDelegate"
+		         icon="icons/sample.gif"
+		         id="kr.co.ed.opros.ce.userComponentRegister"
+		         label="Template Component Register"
+		         menubarPath="kr.co.ed.opros.ce.popupSubMenu/content">
+		   </action>
+  		</objectContribution>
+  	</extension>
+  	<extension point="org.eclipse.ui.navigator.navigatorContent">
+		<commonWizard 
+			menuGroupId="additions.package" 
+			type="new" 
+			wizardId="kr.co.ed.opros.ce.wizards.OPRoSNewPrjWizard">
+  			<enablement /> 
+  		</commonWizard>
+		<commonWizard 
+			menuGroupId="additions.package" 
+			type="new" 
+			wizardId="kr.co.ed.opros.ce.wizards.OPRoSNewComponentWizard">
+			<enablement>
+				<or>
+  					<instanceof 
+  						value="org.eclipse.core.resources.IResource" /> 
+  					<instanceof 
+  						value="org.eclipse.core.resources.IFile" /> 
+  					<instanceof 
+  						value="org.eclipse.core.resources.IFolder" /> 
+  					<instanceof 
+  						value="org.eclipse.cdt.core.model.ICElement" /> 
+  				</or>
+  			</enablement>
+  		</commonWizard>
+  	</extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+         <content-type
+         	base-type="org.eclipse.core.runtime.xml"
+         	file-extentions="xml"
+         	id="kr.co.ed.opros.ce.editor.OPRoSComponent"
+         	name="OPRoS Component Profile"
+         	priority="normal">
+         	<describer
+         		class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber">
+         		<parameter
+         			name="element"
+         			value="component_profile">
+         		</parameter>
+         	</describer>
+         </content-type>
+         <content-type
+         	base-type="org.eclipse.core.runtime.xml"
+         	file-extentions="xml"
+         	id="kr.co.ed.opros.ce.editor.OPRoSMethod"
+         	name="OPRoS Component Method Profile"
+         	priority="normal">
+         	<describer
+         		class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber">
+         		<parameter
+         			name="element"
+         			value="service_port_type_profile">
+         		</parameter>
+         	</describer>
+         </content-type>
+         <content-type
+         	base-type="org.eclipse.core.runtime.xml"
+         	file-extentions="xml"
+         	id="kr.co.ed.opros.ce.editor.OPRoSData"
+         	name="OPRoS Component Data Profile"
+         	priority="normal">
+         	<describer
+         		class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber">
+         		<parameter
+         			name="element"
+         			value="data_type">
+         		</parameter>
+         	</describer>
+         </content-type>
+         <content-type
+               base-type="org.eclipse.core.runtime.text"
+               file-extensions="MF"
+               id="kr.co.ed.opros.ce.component.manifest"
+               name="OPRoS Component Manifest"
+               priority="normal">
+         </content-type>
+   </extension>
+   <extension
+   		 id="kr.co.ed.opros.wizard.exportWizards"
+   		 name="Export Wizard Extension"
+         point="org.eclipse.ui.exportWizards">
+         <category 
+         	id="kr.co.ed.opros.ce.export" 
+         	name="OPRoS" /> 
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+      		class="kr.co.ed.opros.ce.preferences.OPRoS_CE_DirectoryPage"
+      		id="kr.co.ed.opros.ce.preferences.OPRoS_CE_DrectoryPage"
+      		category="org.opros.mainpreference.prefs.view"
+      		name="OPRoS_CE Compile Preference">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="kr.co.ed.opros.ce.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         id="kr.co.ed.core.oprosNature"
+         name="OPRoS Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="kr.co.ed.opros.ce.OPRoSNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+         <decorator
+            id="kr.co.ed.opros.ce.componentdecorators" 
+            label="OPRoS Component" 
+            state="true" 
+            class="kr.co.ed.opros.ce.OPRoSComponentDecorators">
+            <enablement>
+                <objectClass name="org.eclipse.cdt.internal.core.model.CContainer"/> 
+            </enablement>
+        </decorator>         
+   </extension>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            category="kr.co.ed.opros.ce.export"
+            class="kr.co.ed.opros.ce.wizards.export.OPRoSComponentExportWizard"
+            icon="icons/export.png"
+            id="kr.co.ed.opros.ce.wizards.export.OPRoSComponentExportWizard"
+            name="OPRoS Component Export Wizard">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/opros_nature.png"
+            id="kr.co.ed.opros.ce.natureImage"
+            natureId="kr.co.ed.core.oprosNature">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="kr.co.ed.opros.ce.launcher.ComponentLauncherConfigurationDelegate"
+            delegateName="OPRoS Component Launcher"
+            id="org.opros.componentEditor.launchConfigurationType"
+            modes="run"
+            name="OPRoS Component"
+            public="true">
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="kr.co.ed.opros.ce.launcher.ComponentLaunchShortcut"
+            icon="icons/run_comp.png"
+            id="org.opros.componentEditor.component"
+            label="OPRoS Component"
+            modes="run">
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <or>
+                        <adapt
+                              type="org.eclipse.core.resources.IResource">
+                           <test
+                                 property="org.eclipse.core.resources.projectNature"
+                                 value="kr.co.ed.core.oprosNature">
+                           </test>
+                        </adapt>
+                     </or>
+                  </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+      </shortcut>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.opros.componentEditor.launchConfigurationType"
+            icon="icons/run_comp.png"
+            id="org.opros.componentEditor.launchConfigurationTypeImage">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="kr.co.ed.opros.ce.launcher.OPRoSComponentLaunchConfigurationTabGroup"
+            description="OPRoS Component"
+            id="org.opros.componentEditor.launchConfigurationTabGroup.component"
+            type="org.opros.componentEditor.launchConfigurationType">
+      </launchConfigurationTabGroup>
+   </extension>
+</plugin>

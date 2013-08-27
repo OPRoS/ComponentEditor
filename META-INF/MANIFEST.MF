@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OPRoS Component Editor
+Bundle-SymbolicName: org.opros.componentEditor;singleton:=true
+Bundle-Version: 2.2.6.9
+Bundle-Activator: kr.co.ed.opros.ce.OPRoSActivator
+Bundle-Vendor: ED Corp.
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.ui
+ .ide,org.eclipse.ui.views,org.eclipse.gef,org.eclipse.cdt.managedbuil
+ der.core,org.eclipse.cdt.debug.core,org.eclipse.debug.ui,org.eclipse.
+ cdt.core,org.eclipse.cdt.ui,org.eclipse.rse.core,org.eclipse.rse.ui,o
+ rg.eclipse.rse.files.ui,org.eclipse.rse.subsystems.files.core,org.ecl
+ ipse.cdt.launch.remote,org.eclipse.ui.forms,org.eclipse.ui.editors,or
+ g.eclipse.jface.text,org.opros.mainPreference,org.eclipse.ui.console,
+ org.eclipse.search,org.eclipse.ui.navigator.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/bsf.jar,lib/jd.jar,lib/jdom.jar,lib/xerces.jar,.
+Export-Package: kr.co.ed.opros.ce,kr.co.ed.opros.ce.wizards,org.jdom,o
+ rg.jdom.adapters,org.jdom.filter,org.jdom.input,org.jdom.output,org.j
+ dom.transform,org.jdom.xpath
+

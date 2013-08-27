@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<service_port_type_profile>
+	<service_port_type>
+		<type_name>position1d</type_name>
+		<method name="SetSpeed" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aVel</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="Goto" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aPos</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aVel</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+		<method name="GetSize" return_type="opros_bbox3d" call_type="blocking" />
+		<method name="GetPose" return_type="opros_pose3d" call_type="blocking" />
+		<method name="SetMotorEnable" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>enable</name>
+				<type>bool</type>
+			</param>
+		</method>
+		<method name="SetOdometry" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aPos</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="ResetOdometry" return_type="void" call_type="blocking" />
+		<method name="GetPos" return_type="double" call_type="blocking" />
+		<method name="GetVel" return_type="double" call_type="blocking" />
+		<method name="GetStall" return_type="bool" call_type="blocking" />
+		<method name="GetStatus" return_type="unsigned char" call_type="blocking" />
+		<method name="IsLimitMin" return_type="bool" call_type="blocking" />
+		<method name="IsLimitCen" return_type="bool" call_type="blocking" />
+		<method name="IsLimitMax" return_type="bool" call_type="blocking" />
+		<method name="IsOverCurrent" return_type="bool" call_type="blocking" />
+		<method name="IsTrajComplete" return_type="bool" call_type="blocking" />
+		<method name="IsEnabled" return_type="bool" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>position2d</type_name>
+		<method name="DiffVel" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>vl</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>vr</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetSpeed3" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aYSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aYawSpeed</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetSpeed2" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aYawSpeed</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetSpeed1" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>vel</name>
+				<type>opros_pose2d</type>
+			</param>
+		</method>
+		<method name="SetVelHead3" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aYSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aYawHead</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetVelHead2" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aYawHead</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="Goto2" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>pos</name>
+				<type>opros_pose2d</type>
+			</param>
+			<param index="2">
+				<name>vel</name>
+				<type>opros_pose2d</type>
+			</param>
+		</method>
+		<method name="Goto1" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>pos</name>
+				<type>opros_pose2d</type>
+			</param>
+		</method>
+		<method name="Goto3" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aX</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aY</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aYaw</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetCarlike" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aDriveAngle</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+		<method name="GetOffset" return_type="opros_pose3d" call_type="blocking" />
+		<method name="GetSize" return_type="opros_bbox3d" call_type="blocking" />
+		<method name="SetMotorEnable" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>enable</name>
+				<type>bool</type>
+			</param>
+		</method>
+		<method name="ResetOdometry" return_type="void" call_type="blocking" />
+		<method name="SetOdometry" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aX</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aY</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aYaw</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="GetXPos" return_type="double" call_type="blocking" />
+		<method name="GetYPos" return_type="double" call_type="blocking" />
+		<method name="GetYaw" return_type="double" call_type="blocking" />
+		<method name="GetXSpeed" return_type="double" call_type="blocking" />
+		<method name="GetYSpeed" return_type="double" call_type="blocking" />
+		<method name="GetYawSpeed" return_type="double" call_type="blocking" />
+		<method name="GetStall" return_type="bool" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>position3d</type_name>
+		<method name="SetSpeed6" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aYSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aZSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>aRollSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="5">
+				<name>aPitchSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="6">
+				<name>aYawSpeed</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetSpeed4" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aYSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aZSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>aYawSpeed</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetSpeed3" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aYSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aYawSpeed</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetSpeed2" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aXSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aYawSpeed</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetSpeed1" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>vel</name>
+				<type>opros_pose3d</type>
+			</param>
+		</method>
+		<method name="Goto2" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aPos</name>
+				<type>opros_pose3d</type>
+			</param>
+			<param index="2">
+				<name>aVel</name>
+				<type>opros_pose3d</type>
+			</param>
+		</method>
+		<method name="Goto1" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aPos</name>
+				<type>opros_pose3d</type>
+			</param>
+		</method>
+		<method name="Goto6" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aX</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aY</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aZ</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>aRool</name>
+				<type>double</type>
+			</param>
+			<param index="5">
+				<name>aPitch</name>
+				<type>double</type>
+			</param>
+			<param index="6">
+				<name>aYaw</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetMotorEnable" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aEnable</name>
+				<type>bool</type>
+			</param>
+		</method>
+		<method name="SelectVelocityControl" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aMode</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="ResetOdometry" return_type="void" call_type="blocking" />
+		<method name="SetOdometry" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aX</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aY</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aZ</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>aRool</name>
+				<type>double</type>
+			</param>
+			<param index="5">
+				<name>aPitch</name>
+				<type>double</type>
+			</param>
+			<param index="6">
+				<name>aYaw</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+		<method name="GetXPos" return_type="double" call_type="blocking" />
+		<method name="GetYPos" return_type="double" call_type="blocking" />
+		<method name="GetZPos" return_type="double" call_type="blocking" />
+		<method name="GetRoll" return_type="double" call_type="blocking" />
+		<method name="GetPitch" return_type="double" call_type="blocking" />
+		<method name="GetYaw" return_type="double" call_type="blocking" />
+		<method name="GetXSpeed" return_type="double" call_type="blocking" />
+		<method name="GetYSpeed" return_type="double" call_type="blocking" />
+		<method name="GetZSpeed" return_type="double" call_type="blocking" />
+		<method name="GetRollSpeed" return_type="double" call_type="blocking" />
+		<method name="GetPitchSpeed" return_type="double" call_type="blocking" />
+		<method name="GetYawSpeed" return_type="double" call_type="blocking" />
+		<method name="GetStall" return_type="bool" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>power</type_name>
+		<method name="GetCharge" return_type="double" call_type="blocking" />
+		<method name="GetPercent" return_type="dobule" call_type="blocking" />
+		<method name="GetJoules" return_type="double" call_type="blocking" />
+		<method name="GetWatts" return_type="double" call_type="blocking" />
+		<method name="GetCharging" return_type="bool" call_type="blocking" />
+		<method name="IsValid" return_type="bool" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>actarray</type_name>
+		<method name="RequestGeometry" return_type="void" call_type="blocking" />
+		<method name="SetPowerConfig" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aVal</name>
+				<type>bool</type>
+			</param>
+		</method>
+		<method name="SetBrakesConfig" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aVal</name>
+				<type>bool</type>
+			</param>
+		</method>
+		<method name="SetSpeedConfig" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aJoint</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="2">
+				<name>aSpeed</name>
+				<type>float</type>
+			</param>
+		</method>
+		<method name="MoveTo" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aJoint</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="2">
+				<name>aPos</name>
+				<type>float</type>
+			</param>
+		</method>
+		<method name="MoveToMulti" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aPos</name>
+				<type>std::vector&lt;float&gt;</type>
+			</param>
+		</method>
+		<method name="MoveAtSpeed" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aJoint</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="2">
+				<name>aSpeed</name>
+				<type>float</type>
+			</param>
+		</method>
+		<method name="MoveAtSpeedMulti" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aSpeed</name>
+				<type>std::vector&lt;float&gt;</type>
+			</param>
+		</method>
+		<method name="MoveHome" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aJoint</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="SetActuatorCurrent" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aJoint</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="2">
+				<name>aCurrent</name>
+				<type>float</type>
+			</param>
+		</method>
+		<method name="SetActuatorCurrentMulti" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aCurrent</name>
+				<type>std::vector&lt;float&gt;</type>
+			</param>
+		</method>
+		<method name="GetCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetActuatorData" return_type="opros_actarray_actuator" call_type="blocking">
+			<param index="1">
+				<name>aJoint</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetActuatorGeom" return_type="opros_actarray_actuatorgeom" call_type="blocking">
+			<param index="1">
+				<name>aJoint</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetBasePos" return_type="opros_point_3d" call_type="blocking" />
+		<method name="GetBaseOrientation" return_type="opros_orientation_3d" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>aio</type_name>
+		<method name="GetCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetVoltage" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="SetVoltage" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="2">
+				<name>aVoltage</name>
+				<type>double</type>
+			</param>
+		</method>
+	</service_port_type>
+	<service_port_type>
+		<type_name>bumper</type_name>
+		<method name="GetVectorScan" return_type="std::vector&lt;unsigned char&gt;" call_type="blocking" />
+		<method name="GetCount" return_type="unsigned int" call_type="blocking" />
+		<method name="IsBumped" return_type="unsigned int" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="IsAnyBumped" return_type="bool" call_type="blocking" />
+		<method name="RequestBumperConfig" return_type="void" call_type="blocking" />
+		<method name="GetPoseCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetPose" return_type="opros_bumper_define" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+	</service_port_type>
+	<service_port_type>
+		<type_name>camera</type_name>
+		<method name="SaveFrame" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aPrefix</name>
+				<type>std::string</type>
+			</param>
+			<param index="2">
+				<name>aWidth=4</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="Decompress" return_type="void" call_type="blocking" />
+		<method name="GetDepth" return_type="unsigned int" call_type="blocking" />
+		<method name="GetWidth" return_type="unsigned int" call_type="blocking" />
+		<method name="GetHeight" return_type="unsigned int" call_type="blocking" />
+		<method name="GetFormat" return_type="unsigned int" call_type="blocking" />
+		<method name="GetImageSize" return_type="unsigned int" call_type="blocking" />
+		<method name="GetImage" return_type="std::vector&lt;unsigned char&gt;" call_type="blocking" />
+		<method name="GetCompression" return_type="unsigned int" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>dio</type_name>
+		<method name="GetCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetDigin" return_type="unsigned int" call_type="blocking" />
+		<method name="GetInput" return_type="bool" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="SetOutput" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aCount</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="2">
+				<name>aDigout</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+	</service_port_type>
+	<service_port_type>
+		<type_name>ir</type_name>
+		<method name="GetCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetRange" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetVoltage" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetPoseCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetPose" return_type="opros_pose3d" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>laser</type_name>
+		<method name="GetCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetMaxRange" return_type="double" call_type="blocking" />
+		<method name="GetScanRes" return_type="double" call_type="blocking" />
+		<method name="GetRangeRes" return_type="double" call_type="blocking" />
+		<method name="GetScanningFrequency" return_type="double" call_type="blocking" />
+		<method name="GetMinAngle" return_type="double" call_type="blocking" />
+		<method name="GetMaxAngle" return_type="double" call_type="blocking" />
+		<method name="GetConfMinAngle" return_type="double" call_type="blocking" />
+		<method name="GetConfMaxAngle" return_type="double" call_type="blocking" />
+		<method name="IntensityOn" return_type="bool" call_type="blocking" />
+		<method name="GetPoint" return_type="opros_point_2d" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetCloudPoin2d" return_type="opros_cloud_point2d" call_type="blocking" />
+		<method name="GetVectorRange" return_type="std::vector&lt;double&gt;" call_type="blocking" />
+		<method name="GetVectorBearing" return_type="std::vector&lt;double&gt;" call_type="blocking" />
+		<method name="GetRange" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetBearing" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetIntensity" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetID" return_type="int" call_type="blocking" />
+		<method name="Configure" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aMinAngle</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aMaxAngle</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aScanRes</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="4">
+				<name>aRangeRes</name>
+				<type>unsigned int</type>
+			</param>
+			<param index="5">
+				<name>aIntensity</name>
+				<type>bool</type>
+			</param>
+			<param index="6">
+				<name>aScanningFrequency</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="RequestConfigure" return_type="void" call_type="blocking" />
+		<method name="RequestID" return_type="void" call_type="blocking" />
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+		<method name="GetPose" return_type="opros_pose3d" call_type="blocking" />
+		<method name="GetRobotPose" return_type="opros_pose3d" call_type="blocking" />
+		<method name="GetSize" return_type="opros_bbox3d" call_type="blocking" />
+		<method name="GetMinLeft" return_type="double" call_type="blocking" />
+		<method name="GetMinRight" return_type="double" call_type="blocking" />
+		<method name="MinLeft" return_type="double" call_type="blocking" />
+		<method name="MinRight" return_type="double" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>ranger</type_name>
+		<method name="GetElementCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetDevicePose" return_type="opros_pose3d" call_type="blocking" />
+		<method name="GetDeviceSize" return_type="opros_bbox3d" call_type="blocking" />
+		<method name="GetElementPose" return_type="opros_pose3d" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetElementSize" return_type="opros_bbox3d" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetRangeCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetRange" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetIntensityCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetIntensity" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="SetPower" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aEnable</name>
+				<type>bool</type>
+			</param>
+		</method>
+		<method name="SetIntensityData" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aEnable</name>
+				<type>bool</type>
+			</param>
+		</method>
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+		<method name="Configure" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aMinAngle</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aMaxAngle</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aAngularRes</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>aMinRange</name>
+				<type>double</type>
+			</param>
+			<param index="5">
+				<name>aMaxRange</name>
+				<type>double</type>
+			</param>
+			<param index="6">
+				<name>aRangeRes</name>
+				<type>double</type>
+			</param>
+			<param index="7">
+				<name>aFrequency</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="RequestConfigure" return_type="void" call_type="blocking" />
+		<method name="GetMinAngle" return_type="double" call_type="blocking" />
+		<method name="GetMaxAngle" return_type="double" call_type="blocking" />
+		<method name="GetAngularRes" return_type="double" call_type="blocking" />
+		<method name="GetMinRange" return_type="double" call_type="blocking" />
+		<method name="GetMaxRange" return_type="double" call_type="blocking" />
+		<method name="GetRangeRes" return_type="double" call_type="blocking" />
+		<method name="GetFrequency" return_type="double" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>simulation</type_name>
+		<method name="SetPose2d" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>identifier</name>
+				<type>std::vector&lt;char&gt;</type>
+			</param>
+			<param index="2">
+				<name>x</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>y</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>a</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="GetPose2d" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>identifier</name>
+				<type>std::vector&lt;char&gt;</type>
+			</param>
+			<param index="2">
+				<name>x</name>
+				<type>double&amp;</type>
+			</param>
+			<param index="3">
+				<name>y</name>
+				<type>double&amp;</type>
+			</param>
+			<param index="4">
+				<name>a</name>
+				<type>double&amp;</type>
+			</param>
+		</method>
+		<method name="SetPose3d" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>identifier</name>
+				<type>std::vector&lt;char&gt;</type>
+			</param>
+			<param index="2">
+				<name>x</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>y</name>
+				<type>double</type>
+			</param>
+			<param index="4">
+				<name>z</name>
+				<type>double</type>
+			</param>
+			<param index="5">
+				<name>roll</name>
+				<type>double</type>
+			</param>
+			<param index="6">
+				<name>pitch</name>
+				<type>double</type>
+			</param>
+			<param index="7">
+				<name>yaw</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="GetPose3d" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>identifier</name>
+				<type>std::vector&lt;char&gt;</type>
+			</param>
+			<param index="2">
+				<name>x</name>
+				<type>double&amp;</type>
+			</param>
+			<param index="3">
+				<name>y</name>
+				<type>double&amp;</type>
+			</param>
+			<param index="4">
+				<name>z</name>
+				<type>double&amp;</type>
+			</param>
+			<param index="5">
+				<name>roll</name>
+				<type>double&amp;</type>
+			</param>
+			<param index="6">
+				<name>pitch</name>
+				<type>double&amp;</type>
+			</param>
+			<param index="7">
+				<name>yaw</name>
+				<type>double&amp;</type>
+			</param>
+			<param index="8">
+				<name>time</name>
+				<type>double&amp;</type>
+			</param>
+		</method>
+		<method name="GetProperty" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>identifier</name>
+				<type>std::vector&lt;char&gt;</type>
+			</param>
+			<param index="2">
+				<name>name</name>
+				<type>std::string</type>
+			</param>
+			<param index="3">
+				<name>value</name>
+				<type>std::vector&lt;void&gt;</type>
+			</param>
+			<param index="4">
+				<name>value_len</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="SetProperty" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>identifier</name>
+				<type>std::vector&lt;char&gt;</type>
+			</param>
+			<param index="2">
+				<name>name</name>
+				<type>std::string</type>
+			</param>
+			<param index="3">
+				<name>value</name>
+				<type>std::vector&lt;void&gt;</type>
+			</param>
+			<param index="4">
+				<name>value_len</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+	</service_port_type>
+	<service_port_type>
+		<type_name>sonar</type_name>
+		<method name="GetVectorScan" return_type="std::vector&lt;double&gt;" call_type="blocking" />
+		<method name="GetCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetScan" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetPoseCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetPose" return_type="opros_pose3d" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>map</type_name>
+		<method name="RequestMap" return_type="void" call_type="blocking" />
+		<method name="GetCellIndex" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>x</name>
+				<type>int</type>
+			</param>
+			<param index="2">
+				<name>y</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="GetCell" return_type="signed char " call_type="blocking">
+			<param index="1">
+				<name>x</name>
+				<type>int</type>
+			</param>
+			<param index="2">
+				<name>y</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="GetResolution" return_type="double" call_type="blocking" />
+		<method name="GetWidth" return_type="unsigned int" call_type="blocking" />
+		<method name="GetHeight" return_type="unsigned int" call_type="blocking" />
+		<method name="GetOriginX" return_type="double" call_type="blocking" />
+		<method name="GetOriginY" return_type="double" call_type="blocking" />
+		<method name="GetMap" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aMap</name>
+				<type>std::vector&lt;char&gt;</type>
+			</param>
+		</method>
+	</service_port_type>
+	<service_port_type>
+		<type_name>joystick</type_name>
+		<method name="GetVectorAxes" return_type="std::vector&lt;double&gt;" call_type="blocking" />
+		<method name="GetButtons" return_type="unsigned int" call_type="blocking" />
+		<method name="GetButtonsCheck" return_type="std::vector&lt;int&gt;" call_type="blocking" />
+		<method name="GetAxes" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetAxesCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetPose" return_type="opros_pose3d" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>imu</type_name>
+		<method name="GetXAccel" return_type="double" call_type="blocking" />
+		<method name="GetYAccel" return_type="double" call_type="blocking" />
+		<method name="GetZAccel" return_type="double" call_type="blocking" />
+		<method name="GetXGyro" return_type="double" call_type="blocking" />
+		<method name="GetYGyro" return_type="double" call_type="blocking" />
+		<method name="GetZGyro" return_type="double" call_type="blocking" />
+		<method name="GetXMagn" return_type="double" call_type="blocking" />
+		<method name="GetYMagn" return_type="double" call_type="blocking" />
+		<method name="GetZMagn" return_type="double" call_type="blocking" />
+		<method name="SetDatatype" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aDatatype</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="ResetOrientation" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aValue</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="GetPose" return_type="opros_pose3d" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>fiducial</type_name>
+		<method name="GetFiducialVectorItem" return_type="std::vector&lt;opros_fiducial_item&gt;" call_type="blocking" />
+		<method name="GetCount" return_type="unsigned int" call_type="blocking" />
+		<method name="GetFiducialItem" return_type="opros_fiducial_item" call_type="blocking">
+			<param index="1">
+				<name>aIndex</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetVectorItem" return_type="std::vector&lt;double&gt;" call_type="blocking" />
+		<method name="GetSensorPose" return_type="opros_pose3d" call_type="blocking" />
+		<method name="GetSensorSize" return_type="opros_bbox3d" call_type="blocking" />
+		<method name="GetFiducialSize" return_type="opros_bbox2d" call_type="blocking" />
+		<method name="RequestGeom" return_type="void" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>ptz</type_name>
+		<method name="SetCam" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aPan</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aTilt</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aZoom</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SetSpeed" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aPanSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="2">
+				<name>aTiltSpeed</name>
+				<type>double</type>
+			</param>
+			<param index="3">
+				<name>aZoomSpeed</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="SelectControlMode" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aMode</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="GetPan" return_type="double" call_type="blocking" />
+		<method name="GetTilt" return_type="double" call_type="blocking" />
+		<method name="GetZoom" return_type="double" call_type="blocking" />
+		<method name="GetStatus" return_type="int" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>speech</type_name>
+		<method name="Say" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>aStr</name>
+				<type>std::string</type>
+			</param>
+		</method>
+	</service_port_type>
+	<service_port_type>
+		<type_name>health</type_name>
+		<method name="GetIdleCPU" return_type="double" call_type="blocking" />
+		<method name="GetSystemCPU" return_type="double" call_type="blocking" />
+		<method name="GetUserCPU" return_type="double" call_type="blocking" />
+		<method name="GetMemTotal" return_type="long long" call_type="blocking" />
+		<method name="GetMemUsed" return_type="long long" call_type="blocking" />
+		<method name="GetMemFree" return_type="long long" call_type="blocking" />
+		<method name="GetSwapTotal" return_type="long long" call_type="blocking" />
+		<method name="GetSwapUsed" return_type="long long" call_type="blocking" />
+		<method name="GetSwapFree" return_type="long long" call_type="blocking" />
+		<method name="GetPercMemUsed" return_type="double" call_type="blocking" />
+		<method name="GetPercSwapUsed" return_type="long long" call_type="blocking" />
+		<method name="GetPercTotalUsed" return_type="long long" call_type="blocking" />
+	</service_port_type>
+	<service_port_type>
+		<type_name>gps</type_name>
+		<method name="GetLatitude" return_type="double" call_type="blocking" />
+		<method name="GetLongitude" return_type="double" call_type="blocking" />
+		<method name="GetAltitude" return_type="double" call_type="blocking" />
+		<method name="GetSatellites" return_type="unsigned int" call_type="blocking" />
+		<method name="GetQuality" return_type="unsigned int" call_type="blocking" />
+		<method name="GetHdop" return_type="double" call_type="blocking" />
+		<method name="GetVdop" return_type="double" call_type="blocking" />
+		<method name="GetUtmEasting" return_type="double" call_type="blocking" />
+		<method name="GetUtmNorthing" return_type="double" call_type="blocking" />
+		<method name="GetTime" return_type="double" call_type="blocking" />
+		<method name="GetErrHorizontal" return_type="double" call_type="blocking" />
+		<method name="GetErrVertical" return_type="double" call_type="blocking" />
+	</service_port_type>
+</service_port_type_profile>
+

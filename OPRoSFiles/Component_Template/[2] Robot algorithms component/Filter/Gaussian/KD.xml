@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<service_port_type_profile>
+	<service_port_type>
+		<type_name>KinematicsDynamics</type_name>
+		<method name="SetArticulatedBodyInertia" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>rbi</name>
+				<type>const RigidBodyInertia&amp;</type>
+			</param>
+		</method>
+		<method name="ArticulatedBodyInertia" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>M</name>
+				<type>const Eigen::Matrix3d&amp;</type>
+			</param>
+			<param index="2">
+				<name>H</name>
+				<type>const Eigen::Matrix3d&amp;</type>
+			</param>
+			<param index="3">
+				<name>I</name>
+				<type>const Eigen::Matrix3d&amp;</type>
+			</param>
+		</method>
+		<method name="addSegment" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>segment</name>
+				<type>const Segment&amp;</type>
+			</param>
+		</method>
+		<method name="addChain" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>chain</name>
+				<type>const Chain&amp;</type>
+			</param>
+		</method>
+		<method name="getNrOfJoints" return_type="unsigned int" call_type="blocking" />
+		<method name="getNrOfSegments" return_type="unsigned int" call_type="blocking" />
+		<method name="getSegment" return_type="const Segment&amp;" call_type="blocking" />
+		<method name="SetChainDynParam" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>chain</name>
+				<type>const Chain&amp;</type>
+			</param>
+			<param index="2">
+				<name>_grav</name>
+				<type>Vector</type>
+			</param>
+		</method>
+		<method name="JntToCoriolis" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>q</name>
+				<type>const JntArray&amp;</type>
+			</param>
+			<param index="2">
+				<name>q_dot</name>
+				<type>const JntArray &amp;</type>
+			</param>
+			<param index="3">
+				<name>coriolis</name>
+				<type>JntArray &amp;</type>
+			</param>
+		</method>
+		<method name="JntToMass" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>q</name>
+				<type>const JntArray &amp;</type>
+			</param>
+			<param index="2">
+				<name>H</name>
+				<type>JntSpaceInertiaMatrix&amp;</type>
+			</param>
+		</method>
+		<method name="JntToGravity" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>q</name>
+				<type>const JntArray &amp;</type>
+			</param>
+			<param index="2">
+				<name>gravity</name>
+				<type>JntArray &amp;</type>
+			</param>
+		</method>
+		<method name="JntToCart" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>q_in</name>
+				<type>const JntArray&amp;</type>
+			</param>
+			<param index="2">
+				<name>p_out</name>
+				<type>Frame&amp;</type>
+			</param>
+			<param index="3">
+				<name>segmentNr</name>
+				<type>int</type>
+			</param>
+		</method>
+		<method name="CartToJnt" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>q</name>
+				<type>const JntArray &amp;</type>
+			</param>
+			<param index="2">
+				<name>q_dot</name>
+				<type>const JntArray &amp;</type>
+			</param>
+			<param index="3">
+				<name>q_dotdot</name>
+				<type>const JntArray &amp;</type>
+			</param>
+			<param index="4">
+				<name>f_ext</name>
+				<type>const Wrenches&amp;</type>
+			</param>
+			<param index="5">
+				<name>torques</name>
+				<type>JntArray &amp;</type>
+			</param>
+		</method>
+		<method name="setWeights" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>weights</name>
+				<type>const JntArray &amp;</type>
+			</param>
+		</method>
+		<method name="setOptPos" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>opt_pos</name>
+				<type>const JntArray &amp;</type>
+			</param>
+		</method>
+		<method name="setAlpha" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>alpha</name>
+				<type>const int</type>
+			</param>
+		</method>
+		<method name="setWeightJS" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>Mq</name>
+				<type>const Eigen::MatrixXd&amp;</type>
+			</param>
+		</method>
+		<method name="setWeightTS" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>Mx</name>
+				<type>const Eigen::MatrixXd&amp;</type>
+			</param>
+		</method>
+		<method name="setLambda" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>lambda</name>
+				<type>const double&amp;</type>
+			</param>
+		</method>
+		<method name="JntToJac" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>q_in</name>
+				<type>const JntArray&amp;</type>
+			</param>
+			<param index="2">
+				<name>jac</name>
+				<type>Jacobian&amp;</type>
+			</param>
+		</method>
+		<method name="setLockedJoints" return_type="int" call_type="blocking">
+			<param index="1">
+				<name>locked_joints</name>
+				<type>const std::vector&lt;bool&gt;</type>
+			</param>
+		</method>
+		<method name="SetJacobian" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>nr_of_columns</name>
+				<type>unsigned int</type>
+			</param>
+		</method>
+		<method name="changeRefPoint" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>base_AB</name>
+				<type>const Vector&amp;</type>
+			</param>
+		</method>
+		<method name="changeBase" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>rot</name>
+				<type>const Rotation&amp;</type>
+			</param>
+		</method>
+		<method name="changeRefFrame" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>frame</name>
+				<type>const Frame&amp;</type>
+			</param>
+		</method>
+		<method name="SetToZero" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>v</name>
+				<type>Vector&amp;</type>
+			</param>
+		</method>
+		<method name="Normalize" return_type="double" call_type="blocking">
+			<param index="1">
+				<name>eps</name>
+				<type>double</type>
+			</param>
+		</method>
+		<method name="Set2DXY" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>v</name>
+				<type>const Vector2&amp;</type>
+			</param>
+		</method>
+		<method name="Set2DYZ" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>v</name>
+				<type>const Vector2&amp;</type>
+			</param>
+		</method>
+		<method name="Set2DZX" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>v</name>
+				<type>const Vector2&amp;</type>
+			</param>
+		</method>
+		<method name="Set2DPlane" return_type="void" call_type="blocking">
+			<param index="1">
+				<name>F_someframe_XY</name>
+				<type>const Frame&amp;</type>
+			</param>
+			<param index="2">
+				<name>v_XY</name>
+				<type>const Vector2&amp;</type>
+			</param>
+		</method>
+		<method name="VectorEqual" return_type="bool" call_type="blocking">
+			<param index="1">
+				<name>a</name>
+				<type>const Vector&amp;</type>
+			</param>
+			<param index="2">
+				<name>b</name>
+				<type>const Vector&amp;</type>
+			</param>
+			<param index="3">
+				<name>eps</name>
+				<type>double</type>
+			</param>
+		</method>
+	</service_port_type>
+</service_port_type_profile>
+
